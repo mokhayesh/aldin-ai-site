@@ -5,42 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldin AI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            text-align: center;
-            padding-bottom: 20px;
-        }
-        h1 {
-            color: #1a1a1a;
-        }
-        section {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 800px;
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo_resized.png">
 </head>
 <body>
-    <header>
-        <h1>About Aldin AI</h1>
+    <header class="hero">
+        <img src="logo_resized.png" alt="Aldin AI Logo" class="logo">
+        <h1>Aldin AI</h1>
+        <p class="tagline">Human-Aligned AI for Data-Driven Progress</p>
     </header>
-    <section>
-        <p><strong>Aldin AI LLC</strong>, founded in 2025 in White Lake, Michigan, is an early-stage technology company focused on developing ethical, AI-driven platforms that serve both enterprise and educational markets. The company is currently led by founder Salah Mokhayesh, an experienced data architect and technologist with a track record at major organizations including General Motors, Rocket Mortgage, and OnStar.</p>
 
-        <p>Aldin AI’s flagship enterprise product is a <strong>privacy-preserving synthetic data engine</strong> designed to support AI/ML development in regulated industries. The system ingests structured data from sources like Amazon S3, auto-curates schemas, and generates synthetic records that maintain fidelity while eliminating sensitive information. This enables enterprises to accelerate model development, reduce privacy risks, and meet compliance standards such as HIPAA and GDPR.</p>
-
-        <p>In parallel, Aldin AI is developing <strong>Project ASHER</strong>, an AI-powered educational assistant for K–12 students. ASHER features a speech-enabled avatar, aligned with standardized curricula and customizable by parents to reflect cultural, religious, and personal values. The platform is designed to support problem-solving skills, safeguard against inappropriate content, and prepare students for exams like MEAP, ACT, and SAT—making high-quality, tailored learning accessible at home or in school.</p>
-
-        <p><strong>Mission:</strong> Aldin AI’s mission is to build trusted, human-centered AI solutions that protect privacy, empower learning, and close critical access gaps. Through innovation in both enterprise data and personalized education, the company seeks to redefine what responsible AI looks like across industries.</p>
+    <section id="about">
+        <h2>About Aldin AI</h2>
+        <p>Aldin AI LLC is a Michigan-based AI company founded in 2025. We specialize in developing generative AI systems that prioritize safety, privacy, and alignment. Our mission is to empower innovation through AI that adapts to context, respects privacy, and scales across industries.</p>
     </section>
+
+    <section id="project-asher">
+        <h2>Project ASHER – Personalized AI for K–12 Education</h2>
+        <p>Project ASHER is an AI-powered educational assistant for K–12 students. Featuring a speech-enabled avatar, ASHER offers curriculum-aligned tutoring tailored by parental, cultural, and ethical preferences. Designed with robust safeguards, it prepares students for standardized exams like the MEAP, ACT, and SAT while maintaining interactive, age-appropriate engagement.</p>
+    </section>
+
+    <section id="project-nexus">
+        <h2>Project NEXUS – Hybrid Synthetic Data Platform</h2>
+        <p>Project NEXUS delivers privacy-preserving synthetic data that mirrors enterprise data lake structures. It combines deterministic code with GenAI to preserve relational accuracy while preventing re-identification. Our hallucination-mitigation loop ensures that generated data remains valid and regulation-compliant.</p>
+    </section>
+
+    <footer>
+        <p>Contact: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a> | © 2025 Aldin AI LLC</p>
+    </footer>
 </body>
 </html>
