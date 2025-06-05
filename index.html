@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Aldin AI – Futuristic R&D Lab</title>
 
-<!--  FONTS & ROOT COLORS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --primary:#57b9ff;
-  --bg:#0a0c1a;
-  --panel:#13172b;
+  --bg:#010a10;
+  --panel:#0d111c;
   --text:#d4e0f0;
+  --matrix:#00ff6a;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -23,39 +23,18 @@ body{
   min-height:100vh;overflow-x:hidden;
 }
 
-/*------------- STARFIELD (slow drift) -------------*/
-body::before{
-  content:"";position:fixed;inset:0;
-  background:url("https://raw.githubusercontent.com/tholman/cursor-effects/master/trailing-star.png") repeat center/3px;
-  animation:drift 60s linear infinite;
-  opacity:.15;pointer-events:none;
-}
-@keyframes drift{to{background-position:-2000px 1000px}}
-
-/*------------- METEOR SHOWER -------------*/
-.meteors{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
-.meteors span{
-  position:absolute;top:-10vh;
-  width:2px;height:80px;
-  background:linear-gradient(-45deg,var(--primary),rgba(87,185,255,0));
-  animation:shoot 6s linear infinite;
-  opacity:.85;
-}
-@keyframes shoot{
-  0%{transform:translateX(0) translateY(0);opacity:1}
-  100%{transform:translateX(-160vw) translateY(100vh);opacity:0}
-}
-/* create 20 meteors with different delays / positions */
-.meteors span:nth-child(n){
-  left:calc(5% * var(--i));
-  animation-delay:calc(-0.3s * var(--i));
+/* -------- MATRIX RAIN LAYER -------- */
+canvas#matrix {
+  position:fixed;inset:0;
+  z-index:0;pointer-events:none;
+  opacity:.24;
 }
 
-/*------------- HEADER -------------*/
+/* -------- HEADER -------- */
 header{
   position:fixed;top:0;left:0;right:0;z-index:10;
   display:flex;justify-content:center;align-items:center;
-  background:rgba(0,0,0,.45);backdrop-filter:blur(6px);
+  background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
   padding:.8rem 1rem;
 }
 header h1{font-size:1.5rem;font-weight:700;color:var(--primary)}
@@ -70,16 +49,16 @@ nav a::after{
 }
 nav a:hover::after{transform:scaleX(1)}
 
-/*------------- HERO -------------*/
+/* -------- HERO -------- */
 .hero{
   height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;padding-top:4rem;
+  text-align:center;padding-top:4rem;position:relative;z-index:2;
 }
-.hero img{max-width:220px;width:50vw;animation:float 6s ease-in-out infinite;z-index:2}
+.hero img{max-width:220px;width:50vw;animation:float 6s ease-in-out infinite;}
 @keyframes float{50%{transform:translateY(-12px)}}
-.hero .tagline{font-size:1.25rem;margin-top:1rem;color:var(--primary);z-index:2}
+.hero .tagline{font-size:1.25rem;margin-top:1rem;color:var(--primary)}
 
-/*------------- PANELS -------------*/
+/* -------- PANELS -------- */
 section{
   max-width:900px;margin:5rem auto 0;
   background:var(--panel);border-radius:14px;
@@ -91,10 +70,10 @@ h2{color:var(--primary);margin-bottom:.8rem}
 ul{margin-left:1.2rem;padding-left:.3rem}
 ul li{margin:.3rem 0}
 
-/*------------- FOOTER -------------*/
+/* -------- FOOTER -------- */
 footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
 
-/*------------- MOBILE -------------*/
+/* -------- MOBILE -------- */
 @media(max-width:600px){
   nav{display:none}
   header h1{font-size:1.25rem}
@@ -104,13 +83,8 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
 </head>
 <body>
 
-<!-- Meteor shower layer -->
-<div class="meteors">
-  <!-- create 20 meteors with CSS variable i -->
-  <script>
-    document.write([...Array(20)].map((_,i)=>`<span style="--i:${i};"></span>`).join(''));
-  </script>
-</div>
+<!-- MATRIX RAIN CANVAS -->
+<canvas id="matrix"></canvas>
 
 <!-- ---------- HEADER ---------- -->
 <header>
@@ -131,48 +105,43 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
 </div>
 
 <!-- ---------- PANELS ---------- -->
-
 <section id="mission">
   <h2>Mission</h2>
   <p>
     Aldin AI pioneers <strong>ethical, privacy-first artificial intelligence</strong> that empowers both
     enterprises and learners. We envision a future where synthetic data unlocks innovation without
     compromising personal privacy, and where every student can access culturally attuned,
-    AI-driven tutoring that nurtures curiosity and success. <br><br>
+    AI-driven tutoring that nurtures curiosity and success.<br><br>
     <em>Aldin AI is not only a think-tank but an execution hub on the most relevant ways to utilize AI.</em>
   </p>
 </section>
 
 <section id="asher">
   <h2>Project&nbsp;ASHER &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
-  <p>
-    <ul>
-      <li>Speech-enabled K-12 assistant with friendly avatar.</li>
-      <li>Customizable to MEAP, ACT, SAT &amp; family cultural preferences.</li>
-      <li>Problem-solving guidance—never just the answer.</li>
-      <li>Robust content filters &amp; interactive multimodal learning.</li>
-      <li>Roadmap: mobile AR &amp; holographic classroom-anywhere interface.</li>
-    </ul>
-  </p>
+  <ul>
+    <li>Speech-enabled K-12 assistant with friendly avatar.</li>
+    <li>Customizable learning paths respecting family cultural preferences.</li>
+    <li>Guides problem-solving for MEAP / ACT / SAT readiness.</li>
+    <li>Robust content filters &amp; multimodal, engaging lessons.</li>
+    <li>Roadmap: mobile AR &amp; holographic interface.</li>
+  </ul>
 </section>
 
 <section id="genesis">
   <h2>Project&nbsp;Genesis &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
-  <p>
-    <ul>
-      <li>Real-time synthetic-data engine: ≈1 TB/hr, &lt;0.5 % schema violations.</li>
-      <li>Ingests raw S3 (or any object store), auto-detects schemas, outputs safe data.</li>
-      <li>Hybrid GenAI + code pipeline with differential-privacy guards.</li>
-      <li>Eliminates privacy bottlenecks for AI/ML, A/B testing &amp; analytics—even beyond data lakes.</li>
-    </ul>
-  </p>
+  <ul>
+    <li>Real-time synthetic-data engine: ≈1 TB/hr, &lt;0.5 % schema violations.</li>
+    <li>Ingests raw S3 (or any object store), auto-detects schemas, outputs safe data.</li>
+    <li>Hybrid GenAI + code pipeline with differential-privacy guards.</li>
+    <li>Eliminates privacy bottlenecks for AI/ML, A/B testing &amp; analytics.</li>
+  </ul>
 </section>
 
 <section id="about">
   <h2>About Aldin AI</h2>
   <p>
     Founded May 2025 in White Lake, Michigan, Aldin AI is currently a solo-founder venture led by
-    <strong>Salah A. Mokhayesh</strong> (ex-GM, OnStar, Rocket Mortgage). Salah brings 15+ years of enterprise data &amp; AI
+    <strong>Salah A. Mokhayesh</strong> (ex-GM, OnStar, Rocket Mortgage). Salah brings 15 + years of enterprise data &amp; AI
     expertise, is a bestselling GenAI architecture author, and organizes professional communities on
     AI, data governance, and engineering. Early funding will support hiring a privacy scientist,
     cloud ML engineer, and compliance lead to commercialize Genesis and ASHER.
@@ -189,13 +158,45 @@ footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
 
 <footer>&copy; 2025 Aldin AI LLC – All rights reserved.</footer>
 
-<!-- ---------- PANEL TOGGLING JS ---------- -->
+<!-- ---------- JS: PANEL TOGGLE + MATRIX RAIN ---------- -->
 <script>
+/* panel open/close */
 function openPanel(id){
-  document.querySelectorAll('section').forEach(sec=>sec.classList.remove('visible'));
-  document.getElementById(id).classList.add('visible');
-  window.scrollTo({top:document.getElementById(id).offsetTop-70,behavior:'smooth'});
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('visible'));
+  const el=document.getElementById(id);
+  el.classList.add('visible');
+  window.scrollTo({top:el.offsetTop-70,behavior:'smooth'});
 }
+
+/* Matrix rain canvas */
+const canvas=document.getElementById('matrix');
+const ctx=canvas.getContext('2d');
+let w,h,font=16,cols,drops;
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+  cols=Math.floor(w/font);
+  drops=Array(cols).fill(0);
+}
+resize();window.addEventListener('resize',resize);
+
+const chars='01'.split('');
+
+function draw(){
+  ctx.fillStyle='rgba(0,0,0,0.05)';
+  ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='var(--matrix)';
+  ctx.font=font+'px monospace';
+  for(let i=0;i<cols;i++){
+    const txt=chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(txt,i*font,drops[i]*font);
+    if(drops[i]*font>h&&Math.random()>0.975)drops[i]=0;
+    drops[i]++;
+  }
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
 </body>
 </html>
