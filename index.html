@@ -1,186 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aldin AI – Futuristic R&D Lab</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aldin AI – Futuristic R&D Lab</title>
 
-  <!-- -------------  FONTS & BASE COLORS ------------- -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#57b9ff;
-      --bg:#0a0c1a;
-      --panel:#13172b;
-      --text:#d4e0f0;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Inter',sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+<!--  FONTS & ROOT COLORS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#57b9ff;
+  --bg:#0a0c1a;
+  --panel:#13172b;
+  --text:#d4e0f0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  min-height:100vh;overflow-x:hidden;
+}
 
-    /* -------------  STARFIELD ANIMATION ------------- */
-    body::before{
-      content:"";
-      position:fixed;inset:0;
-      background:url("https://raw.githubusercontent.com/tholman/cursor-effects/master/trailing-star.png") repeat center/3px;
-      animation: drift 60s linear infinite;
-      opacity:.15;pointer-events:none;
-    }
-    @keyframes drift{to{background-position:-2000px 1000px}}
+/*------------- STARFIELD (slow drift) -------------*/
+body::before{
+  content:"";position:fixed;inset:0;
+  background:url("https://raw.githubusercontent.com/tholman/cursor-effects/master/trailing-star.png") repeat center/3px;
+  animation:drift 60s linear infinite;
+  opacity:.15;pointer-events:none;
+}
+@keyframes drift{to{background-position:-2000px 1000px}}
 
-    /* -------------  HEADER ------------- */
-    header{
-      position:fixed;top:0;left:0;right:0;
-      display:flex;justify-content:center;align-items:center;
-      background:rgba(0,0,0,.4);backdrop-filter:blur(6px);
-      padding:.8rem 1rem;z-index:50;
-    }
-    header h1{font-size:1.5rem;font-weight:700;color:var(--primary);letter-spacing:.05em}
-    nav{margin-left:2rem;display:flex;gap:1.2rem}
-    nav a{
-      color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;
-      position:relative;cursor:pointer;
-    }
-    nav a::after{
-      content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;
-      background:var(--primary);transform:scaleX(0);transition:.3s;
-    }
-    nav a:hover::after{transform:scaleX(1)}
+/*------------- METEOR SHOWER -------------*/
+.meteors{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.meteors span{
+  position:absolute;top:-10vh;
+  width:2px;height:80px;
+  background:linear-gradient(-45deg,var(--primary),rgba(87,185,255,0));
+  animation:shoot 6s linear infinite;
+  opacity:.85;
+}
+@keyframes shoot{
+  0%{transform:translateX(0) translateY(0);opacity:1}
+  100%{transform:translateX(-160vw) translateY(100vh);opacity:0}
+}
+/* create 20 meteors with different delays / positions */
+.meteors span:nth-child(n){
+  left:calc(5% * var(--i));
+  animation-delay:calc(-0.3s * var(--i));
+}
 
-    /* -------------  HERO (logo centered) ------------- */
-    .hero{
-      height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;padding-top:4rem;
-    }
-    .hero img{max-width:220px;width:50vw;animation:float 6s ease-in-out infinite}
-    @keyframes float{50%{transform:translateY(-12px)}}
-    .hero .tagline{font-size:1.2rem;margin-top:1rem;color:var(--primary)}
+/*------------- HEADER -------------*/
+header{
+  position:fixed;top:0;left:0;right:0;z-index:10;
+  display:flex;justify-content:center;align-items:center;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(6px);
+  padding:.8rem 1rem;
+}
+header h1{font-size:1.5rem;font-weight:700;color:var(--primary)}
+nav{margin-left:2rem;display:flex;gap:1.2rem}
+nav a{
+  color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;cursor:pointer;
+  position:relative;
+}
+nav a::after{
+  content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;
+  background:var(--primary);transform:scaleX(0);transition:.3s;
+}
+nav a:hover::after{transform:scaleX(1)}
 
-    /* -------------  PANELS ------------- */
-    section{
-      max-width:900px;margin:5rem auto 0;
-      background:var(--panel);border-radius:14px;
-      padding:2.5rem 2rem;line-height:1.6;display:none;
-      opacity:0;transform:translateY(60px);transition:all .5s ease;
-    }
-    section.visible{display:block;opacity:1;transform:translateY(0)}
+/*------------- HERO -------------*/
+.hero{
+  height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding-top:4rem;
+}
+.hero img{max-width:220px;width:50vw;animation:float 6s ease-in-out infinite;z-index:2}
+@keyframes float{50%{transform:translateY(-12px)}}
+.hero .tagline{font-size:1.25rem;margin-top:1rem;color:var(--primary);z-index:2}
 
-    h2{color:var(--primary);margin-bottom:.8rem}
+/*------------- PANELS -------------*/
+section{
+  max-width:900px;margin:5rem auto 0;
+  background:var(--panel);border-radius:14px;
+  padding:2.5rem 2rem;line-height:1.6;display:none;
+  opacity:0;transform:translateY(60px);transition:all .5s ease;
+}
+section.visible{display:block;opacity:1;transform:translateY(0)}
+h2{color:var(--primary);margin-bottom:.8rem}
+ul{margin-left:1.2rem;padding-left:.3rem}
+ul li{margin:.3rem 0}
 
-    /* -------------  FOOTER ------------- */
-    footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
+/*------------- FOOTER -------------*/
+footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
 
-    /* -------------  SMALL ------------- */
-    @media(max-width:600px){
-      nav{display:none}
-      header h1{font-size:1.25rem}
-      .hero img{max-width:160px}
-    }
-  </style>
+/*------------- MOBILE -------------*/
+@media(max-width:600px){
+  nav{display:none}
+  header h1{font-size:1.25rem}
+  .hero img{max-width:160px}
+}
+</style>
 </head>
 <body>
 
-  <!-- ---------- HEADER ---------- -->
-  <header>
-    <h1>Aldin&nbsp;AI</h1>
-    <nav>
-      <a onclick="openPanel('mission')">Mission</a>
-      <a onclick="openPanel('asher')">Project&nbsp;ASHER</a>
-      <a onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
-      <a onclick="openPanel('about')">About</a>
-      <a onclick="openPanel('contact')">Contact</a>
-    </nav>
-  </header>
-
-  <!-- ---------- HERO ---------- -->
-  <div class="hero">
-    <img src="aldin_logo.png" alt="Aldin AI logo">
-    <p class="tagline">Ethical AI for Data &amp; Learners</p>
-  </div>
-
-  <!-- ---------- PANELS ---------- -->
-
-  <!-- Mission -->
-  <section id="mission">
-    <h2>Mission</h2>
-    <p>
-      Aldin AI pioneers <strong>ethical, privacy-first artificial intelligence</strong> that empowers both
-      enterprises and learners. We envision a future where synthetic data unlocks innovation without
-      compromising personal privacy, and where every student can access culturally attuned,
-      AI-driven tutoring that nurtures curiosity and success.
-    </p>
-  </section>
-
-  <!-- Project ASHER -->
-  <section id="asher">
-    <h2>Project&nbsp;ASHER &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
-    <p>
-      A speech-enabled K-12 learning companion with a friendly avatar that:
-      <ul>
-        <li>Aligns to MEAP, ACT, SAT, and local curricula.</li>
-        <li>Lets parents set cultural, religious, or ethical boundaries for content.</li>
-        <li>Guides students to <em>solve</em> problems—never just giving answers.</li>
-        <li>Runs safe-content filters and prepares learners via interactive voice &amp; text.</li>
-      </ul>
-      Future roadmap includes mobile AR and holographic interfaces for an immersive
-      classroom-anywhere experience.
-    </p>
-  </section>
-
-  <!-- Project Genesis -->
-  <section id="genesis">
-    <h2>Project&nbsp;Genesis &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
-    <p>
-      Genesis is our <strong>real-time synthetic-data engine</strong> that:
-      <ul>
-        <li>Ingests raw data from S3 (or any object storage) and auto-detects complex schemas.</li>
-        <li>Uses a hybrid GenAI &amp; deterministic pipeline to generate
-            privacy-preserving synthetic datasets (≈1&nbsp;TB/hr &lt;0.5% violations).</li>
-        <li>Redistributes data to isolated sandboxes, enabling safe AI/ML training,
-            A/B testing, and analytics even outside data-lake environments.</li>
-      </ul>
-      Genesis eliminates privacy bottlenecks, accelerates model iteration, and keeps
-      regulators happy.
-    </p>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Aldin AI</h2>
-    <p>
-      Founded in May 2025 in White Lake, Michigan, Aldin AI is currently
-      a solo-founder venture led by <strong>Salah A. Mokhayesh</strong> (ex-GM, OnStar,
-      Rocket Mortgage). Salah has 15+ years in enterprise data &amp; AI, is a best-selling
-      GenAI architecture author, and organizes communities on AI, data governance, and
-      engineering. Phase I funding will build a founding team of a privacy scientist,
-      cloud ML engineer, and compliance lead to bring Project Genesis and Project ASHER
-      to market.
-    </p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact &amp; Links</h2>
-    <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
-    <p>GitHub: <a href="https://github.com/YOUR-USERNAME" target="_blank">github.com/YOUR-USERNAME</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/YOUR-PROFILE" target="_blank">linkedin.com/in/YOUR-PROFILE</a></p>
-  </section>
-
-  <footer>&copy; 2025 Aldin AI LLC – All rights reserved.</footer>
-
-  <!-- ---------- SIMPLE JS FOR PANEL TOGGLING ---------- -->
+<!-- Meteor shower layer -->
+<div class="meteors">
+  <!-- create 20 meteors with CSS variable i -->
   <script>
-    function openPanel(id){
-      document.querySelectorAll('section').forEach(sec=>sec.classList.remove('visible'));
-      document.getElementById(id).classList.add('visible');
-      window.scrollTo({top: document.getElementById(id).offsetTop-70, behavior:'smooth'});
-    }
+    document.write([...Array(20)].map((_,i)=>`<span style="--i:${i};"></span>`).join(''));
   </script>
+</div>
+
+<!-- ---------- HEADER ---------- -->
+<header>
+  <h1>Aldin&nbsp;AI</h1>
+  <nav>
+    <a onclick="openPanel('mission')">Mission</a>
+    <a onclick="openPanel('asher')">Project&nbsp;ASHER</a>
+    <a onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
+    <a onclick="openPanel('about')">About</a>
+    <a onclick="openPanel('contact')">Contact</a>
+  </nav>
+</header>
+
+<!-- ---------- HERO ---------- -->
+<div class="hero">
+  <img src="aldin_logo.png" alt="Aldin AI logo">
+  <p class="tagline">Accelerating AI use for Data &amp; Learners</p>
+</div>
+
+<!-- ---------- PANELS ---------- -->
+
+<section id="mission">
+  <h2>Mission</h2>
+  <p>
+    Aldin AI pioneers <strong>ethical, privacy-first artificial intelligence</strong> that empowers both
+    enterprises and learners. We envision a future where synthetic data unlocks innovation without
+    compromising personal privacy, and where every student can access culturally attuned,
+    AI-driven tutoring that nurtures curiosity and success. <br><br>
+    <em>Aldin AI is not only a think-tank but an execution hub on the most relevant ways to utilize AI.</em>
+  </p>
+</section>
+
+<section id="asher">
+  <h2>Project&nbsp;ASHER &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
+  <p>
+    <ul>
+      <li>Speech-enabled K-12 assistant with friendly avatar.</li>
+      <li>Customizable to MEAP, ACT, SAT &amp; family cultural preferences.</li>
+      <li>Problem-solving guidance—never just the answer.</li>
+      <li>Robust content filters &amp; interactive multimodal learning.</li>
+      <li>Roadmap: mobile AR &amp; holographic classroom-anywhere interface.</li>
+    </ul>
+  </p>
+</section>
+
+<section id="genesis">
+  <h2>Project&nbsp;Genesis &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
+  <p>
+    <ul>
+      <li>Real-time synthetic-data engine: ≈1 TB/hr, &lt;0.5 % schema violations.</li>
+      <li>Ingests raw S3 (or any object store), auto-detects schemas, outputs safe data.</li>
+      <li>Hybrid GenAI + code pipeline with differential-privacy guards.</li>
+      <li>Eliminates privacy bottlenecks for AI/ML, A/B testing &amp; analytics—even beyond data lakes.</li>
+    </ul>
+  </p>
+</section>
+
+<section id="about">
+  <h2>About Aldin AI</h2>
+  <p>
+    Founded May 2025 in White Lake, Michigan, Aldin AI is currently a solo-founder venture led by
+    <strong>Salah A. Mokhayesh</strong> (ex-GM, OnStar, Rocket Mortgage). Salah brings 15+ years of enterprise data &amp; AI
+    expertise, is a bestselling GenAI architecture author, and organizes professional communities on
+    AI, data governance, and engineering. Early funding will support hiring a privacy scientist,
+    cloud ML engineer, and compliance lead to commercialize Genesis and ASHER.
+  </p>
+</section>
+
+<section id="contact">
+  <h2>Contact &amp; Links</h2>
+  <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
+  <p>GitHub: <a href="https://github.com/mokhayesh" target="_blank">github.com/mokhayesh</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank">
+      linkedin.com/in/salah-mokhayesh-06509021</a></p>
+</section>
+
+<footer>&copy; 2025 Aldin AI LLC – All rights reserved.</footer>
+
+<!-- ---------- PANEL TOGGLING JS ---------- -->
+<script>
+function openPanel(id){
+  document.querySelectorAll('section').forEach(sec=>sec.classList.remove('visible'));
+  document.getElementById(id).classList.add('visible');
+  window.scrollTo({top:document.getElementById(id).offsetTop-70,behavior:'smooth'});
+}
+</script>
 </body>
 </html>
