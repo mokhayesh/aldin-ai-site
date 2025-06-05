@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Aldin AI – Accelerating AI use for Data & Learners</title>
+<title>Aldin AI – Accelerating AI use for Data, Companies & Learners</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 :root{
@@ -18,10 +18,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:#d0e7ff
 /* Header */
 header{position:fixed;top:0;left:0;right:0;height:60px;background:#000a;
        display:flex;justify-content:center;align-items:center;z-index:5}
-.brand{
-  display:flex;align-items:center;gap:.5rem;cursor:pointer;color:var(--accent);
-  font-size:1.4rem;font-weight:600;text-decoration:none
-}
+.brand{display:flex;align-items:center;gap:.5rem;color:var(--accent);
+       font-size:1.4rem;font-weight:600;text-decoration:none;cursor:pointer}
 .brand img{width:34px;height:34px}
 
 /* Nav */
@@ -33,13 +31,13 @@ nav a:hover{color:var(--accent)}
 #hero{display:flex;flex-direction:column;align-items:center;justify-content:center;
       height:100vh;text-align:center}
 #hero img{width:220px;max-width:65%;filter:drop-shadow(0 0 8px #000)}
-#hero p{margin-top:1.2rem;font-size:1.25rem;color:var(--accent)}
+#hero p{margin-top:.9rem;font-size:1.25rem;color:var(--accent)}
 
 /* Sections */
 section{max-width:850px;margin:80px auto 60px;padding:1.8rem;background:var(--panel);
         border-radius:12px;display:none}
 section.visible{display:block}
-section h2{margin-top:0;color:var(--accent)}
+section h2{color:var(--accent)}
 .funding{background:#ffb70311;border:1px dashed #ffb703;border-radius:6px;
          padding:.5rem .8rem;margin-top:1rem;font-size:.9rem;color:#ffb703}
 
@@ -68,8 +66,9 @@ footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
 </header>
 
 <section id="hero" class="visible">
+  <!-- Logo directly above the tagline -->
   <img src="logo_resized.png" alt="Aldin AI logo" onerror="this.style.display='none'">
-  <p>Accelerating AI use for Data &amp; Learners</p>
+  <p>Accelerating AI use for Data, Companies &amp; Learners</p>
 </section>
 
 <section id="mission">
@@ -83,25 +82,25 @@ footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
 
 <section id="asher">
   <h2>Project ASHER – Adaptive Student Helper & Educational AI</h2>
-  <p>An interactive K-12 assistant with avatar, voice+text, and curriculum-aligned knowledge base.
-     Parents tailor cultural/ethical filters; ASHER teaches problem-solving and prepares students
-     for MEAP / ACT / SAT.</p>
+  <p>An interactive K-12 assistant with avatar, voice + text, and curriculum-aligned knowledge
+     base. Parents tailor cultural/ethical filters; ASHER teaches problem-solving and prepares
+     students for MEAP / ACT / SAT.</p>
   <p class="funding">Seeking pre-seed partners for MVP completion and pilot deployments.</p>
 </section>
 
 <section id="genesis">
   <h2>Project Genesis – Privacy-Preserving Synthetic Data Platform</h2>
   <p>Generates high-fidelity synthetic twins of enterprise data, enforcing differential privacy and
-     eliminating hallucinations. Streams to S3 at &gt;1 TB / hr with &lt;0.5 % schema violations.</p>
+     eliminating hallucinations. Streams to S3 at &gt;1 TB /hr with &lt;0.5 % schema violations.</p>
   <p class="funding">Seeking seed funding for scale-out tests and compliance certification.</p>
 </section>
 
 <section id="about">
   <h2>About Aldin AI</h2>
   <p>Founded May 2025 in White Lake, Michigan by <strong>Salah A. Mokhayesh</strong>, a
-     <strong>20-year</strong> veteran of enterprise data architecture (GM, OnStar, Rocket Mortgage).
-     Salah is a best-selling author on GenAI architecture and runs several professional AI
-     communities.</p>
+     <strong>20-year</strong> veteran of enterprise data architecture (GM, OnStar, Rocket
+     Mortgage). Salah is a best-selling author on GenAI architecture and runs several professional
+     AI communities.</p>
 </section>
 
 <section id="contact">
