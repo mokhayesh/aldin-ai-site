@@ -1,166 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aldin AI – Futuristic R&D Lab</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --primary:#57b9ff;
-  --bg:#010a10;
-  --panel:#0d111c;
-  --text:#d4e0f0;
-  --matrix:#00ff6a;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Inter',sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  min-height:100vh;overflow-x:hidden;
-}
-
-/* -------- MATRIX RAIN LAYER -------- */
-canvas#matrix {
-  position:fixed;inset:0;
-  z-index:0;pointer-events:none;
-  opacity:.24;
-}
-
-/* -------- HEADER -------- */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:10;
-  display:flex;justify-content:center;align-items:center;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
-  padding:.8rem 1rem;
-}
-header h1{font-size:1.5rem;font-weight:700;color:var(--primary)}
-nav{margin-left:2rem;display:flex;gap:1.2rem}
-nav a{
-  color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;cursor:pointer;
-  position:relative;
-}
-nav a::after{
-  content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;
-  background:var(--primary);transform:scaleX(0);transition:.3s;
-}
-nav a:hover::after{transform:scaleX(1)}
-
-/* -------- HERO -------- */
-.hero{
-  height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;padding-top:4rem;position:relative;z-index:2;
-}
-.hero img{max-width:220px;width:50vw;animation:float 6s ease-in-out infinite;}
-@keyframes float{50%{transform:translateY(-12px)}}
-.hero .tagline{font-size:1.25rem;margin-top:1rem;color:var(--primary)}
-
-/* -------- PANELS -------- */
-section{
-  max-width:900px;margin:5rem auto 0;
-  background:var(--panel);border-radius:14px;
-  padding:2.5rem 2rem;line-height:1.6;display:none;
-  opacity:0;transform:translateY(60px);transition:all .5s ease;
-}
-section.visible{display:block;opacity:1;transform:translateY(0)}
-h2{color:var(--primary);margin-bottom:.8rem}
-ul{margin-left:1.2rem;padding-left:.3rem}
-ul li{margin:.3rem 0}
-
-/* -------- FOOTER -------- */
-footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
-
-/* -------- MOBILE -------- */
-@media(max-width:600px){
-  nav{display:none}
-  header h1{font-size:1.25rem}
-  .hero img{max-width:160px}
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Aldin AI – Accelerating AI use for Data & Learners</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Aldin AI builds cutting-edge AI solutions: Project ASHER for K-12 learning & Project Genesis for privacy-preserving synthetic data.">
+  <style>
+    :root{
+      --bg:#04080d;          /* dark background */
+      --panel:#0b1118ee;     /* translucent panel */
+      --accent:#25b7ff;      /* cyan text / links */
+      --matrix:#25b7ff;      /* matrix rain colour */
+      --font:'Segoe UI',sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:var(--font);color:#d0e7ff;background:var(--bg);}
+    /* header ---------------------------------------------------------------- */
+    header{position:fixed;top:0;left:0;right:0;height:60px;
+           background:#000a;display:flex;align-items:center;z-index:10}
+    header h1{margin:0 1rem;font-size:1.4rem;color:var(--accent);cursor:pointer}
+    nav a{margin:0 0.8rem;color:#d0e7ff;text-decoration:none;font-size:0.95rem}
+    nav a:hover{color:var(--accent)}
+    /* hero ------------------------------------------------------------------ */
+    #hero{display:flex;flex-direction:column;align-items:center;
+          justify-content:center;text-align:center;height:100vh}
+    #hero img{width:220px;max-width:60%;filter:drop-shadow(0 0 8px #000);}
+    #hero p{margin:1.2rem 0 0;font-size:1.25rem;color:var(--accent)}
+    /* sections -------------------------------------------------------------- */
+    section{max-width:850px;margin:80px auto 60px;padding:1.8rem;
+            background:var(--panel);border-radius:12px;display:none}
+    section.visible{display:block}
+    section h2{margin-top:0;color:var(--accent)}
+    .funding{background:#ffb70311;border:1px dashed #ffb703;padding:0.5rem 0.8rem;
+             border-radius:6px;margin-top:1rem;font-size:0.9rem;color:#ffb703}
+    /* links ----------------------------------------------------------------- */
+    a{color:var(--accent);}
+    a:hover{text-decoration:none;color:#58ceff}
+    /* footer ---------------------------------------------------------------- */
+    footer{text-align:center;padding:2rem 0;font-size:0.85rem;color:#7a8fa6}
+    /* matrix canvas behind everything -------------------------------------- */
+    #matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
+  </style>
 </head>
 <body>
-
-<!-- MATRIX RAIN CANVAS -->
 <canvas id="matrix"></canvas>
 
-<!-- ---------- HEADER ---------- -->
 <header>
-  <h1>Aldin&nbsp;AI</h1>
+  <h1 onclick="window.scrollTo({top:0,behavior:'smooth'});">Aldin AI</h1>
   <nav>
-    <a onclick="openPanel('mission')">Mission</a>
-    <a onclick="openPanel('asher')">Project&nbsp;ASHER</a>
-    <a onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
-    <a onclick="openPanel('about')">About</a>
-    <a onclick="openPanel('contact')">Contact</a>
+    <a href="#mission" onclick="openPanel('mission')">Mission</a>
+    <a href="#asher"   onclick="openPanel('asher')">Project ASHER</a>
+    <a href="#genesis" onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
+    <a href="#about"   onclick="openPanel('about')">About</a>
+    <a href="#contact" onclick="openPanel('contact')">Contact</a>
   </nav>
 </header>
 
-<!-- ---------- HERO ---------- -->
-<div class="hero">
-  <img src="aldin_logo.png" alt="Aldin AI logo">
-  <p class="tagline">Accelerating AI use for Data &amp; Learners</p>
-</div>
+<!-- Hero ------------------------------------------------------------------->
+<section id="hero" class="visible">
+  <img src="logo_resized.png" alt="Aldin AI logo">
+  <p>Accelerating AI use for Data &amp; Learners</p>
+</section>
 
-<!-- ---------- PANELS ---------- -->
+<!-- Mission ---------------------------------------------------------------->
 <section id="mission">
   <h2>Mission</h2>
-  <p>
-    Aldin AI pioneers <strong>ethical, privacy-first artificial intelligence</strong> that empowers both
-    enterprises and learners. We envision a future where synthetic data unlocks innovation without
-    compromising personal privacy, and where every student can access culturally attuned,
-    AI-driven tutoring that nurtures curiosity and success.<br><br>
-    <em>Aldin AI is not only a think-tank but an execution hub on the most relevant ways to utilize AI.</em>
-  </p>
+  <p>Aldin AI pioneers ethical, high-impact artificial-intelligence solutions that unlock the full value of data while empowering learners and protecting privacy. We bridge frontier research and practical deployment to create tools that are safe, inclusive, and future-proof. <strong>Aldin AI is not only a think tank, but an execution hub delivering the most relevant ways to utilize AI.</strong></p>
 </section>
 
+<!-- Project ASHER ----------------------------------------------------------->
 <section id="asher">
-  <h2>Project&nbsp;ASHER &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
-  <ul>
-    <li>Speech-enabled K-12 assistant with friendly avatar.</li>
-    <li>Customizable learning paths respecting family cultural preferences.</li>
-    <li>Guides problem-solving for MEAP / ACT / SAT readiness.</li>
-    <li>Robust content filters &amp; multimodal, engaging lessons.</li>
-    <li>Roadmap: mobile AR &amp; holographic interface.</li>
-  </ul>
+  <h2>Project ASHER – Adaptive Student Helper & Educational AI</h2>
+  <p>ASHER is an interactive K-12 assistant featuring a friendly avatar, voice+text conversation, and a robust knowledge base aligned to state & standardized curricula (MEAP, ACT, SAT). Parents customize cultural, religious, or ethical filters; ASHER teaches problem-solving, not answer-copying, and prepares students through gamified practice and formative feedback.</p>
+  <p class="funding">Seeking pre-seed partners to complete MVP, safety audits, and pilot deployments with Michigan school districts.</p>
 </section>
 
+<!-- Project Genesis --------------------------------------------------------->
 <section id="genesis">
-  <h2>Project&nbsp;Genesis &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
-  <ul>
-    <li>Real-time synthetic-data engine: ≈1 TB/hr, &lt;0.5 % schema violations.</li>
-    <li>Ingests raw S3 (or any object store), auto-detects schemas, outputs safe data.</li>
-    <li>Hybrid GenAI + code pipeline with differential-privacy guards.</li>
-    <li>Eliminates privacy bottlenecks for AI/ML, A/B testing &amp; analytics.</li>
-  </ul>
+  <h2>Project Genesis – Privacy-Preserving Synthetic Data Platform</h2>
+  <p>Genesis is a lake-native engine that ingests sensitive enterprise data, auto-curates schemas, and produces high-fidelity synthetic twins while enforcing differential-privacy guarantees and eliminating hallucinations. It streams synthetic datasets back to S3 for AI training and testing at &gt;1 TB / hour and &lt;0.5 % schema violations.</p>
+  <p class="funding">Seeking seed funding for scaling tests, compliance certification, and early-adopter integrations in health-tech and fintech.</p>
 </section>
 
+<!-- About ------------------------------------------------------------------->
 <section id="about">
   <h2>About Aldin AI</h2>
-  <p>
-    Founded May 2025 in White Lake, Michigan, Aldin AI is currently a solo-founder venture led by
-    <strong>Salah A. Mokhayesh</strong> (ex-GM, OnStar, Rocket Mortgage). Salah brings 15 + years of enterprise data &amp; AI
-    expertise, is a bestselling GenAI architecture author, and organizes professional communities on
-    AI, data governance, and engineering. Early funding will support hiring a privacy scientist,
-    cloud ML engineer, and compliance lead to commercialize Genesis and ASHER.
-  </p>
+  <p>Founded in May 2025 in White Lake, Michigan, Aldin AI LLC is led by <strong>Salah A. Mokhayesh</strong>—a 15-year veteran of enterprise data platforms at General Motors, OnStar, Rocket Mortgage, and Quicken Loans. Salah is a best-selling author on GenAI architecture and the organizer of several professional communities in AI, data governance, and engineering.</p>
+  <p>Working prototype code and open-source demos reside on our GitHub. Phase I hiring plans include a part-time Chief Scientist (privacy & GANs), Cloud ML Engineer, and Product/Compliance lead.</p>
 </section>
 
+<!-- Contact ----------------------------------------------------------------->
 <section id="contact">
-  <h2>Contact &amp; Links</h2>
+  <h2>Contact & Links</h2>
   <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
   <p>GitHub: <a href="https://github.com/mokhayesh" target="_blank">github.com/mokhayesh</a></p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank">
-      linkedin.com/in/salah-mokhayesh-06509021</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank">linkedin.com/in/salah-mokhayesh-06509021</a></p>
 </section>
 
-<footer>&copy; 2025 Aldin AI LLC – All rights reserved.</footer>
+<footer>&copy; 2025 Aldin AI LLC — All rights reserved.</footer>
 
-<!-- ---------- JS: PANEL TOGGLE + MATRIX RAIN ---------- -->
+<!-- ---------- JS: panel toggle + matrix rain ------------------------------ -->
 <script>
-/* panel open/close */
+/* smooth panel navigation */
 function openPanel(id){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('visible'));
   const el=document.getElementById(id);
@@ -168,35 +109,37 @@ function openPanel(id){
   window.scrollTo({top:el.offsetTop-70,behavior:'smooth'});
 }
 
-/* Matrix rain canvas */
-const canvas=document.getElementById('matrix');
-const ctx=canvas.getContext('2d');
-let w,h,font=16,cols,drops;
+/* Matrix digital-rain background */
+(function(){
+  const canvas=document.getElementById('matrix');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  const fontSize=16, letters='0123456789abcdef';
+  let cols,drops,w,h;
 
-function resize(){
-  w=canvas.width=window.innerWidth;
-  h=canvas.height=window.innerHeight;
-  cols=Math.floor(w/font);
-  drops=Array(cols).fill(0);
-}
-resize();window.addEventListener('resize',resize);
+  function init(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+    cols=Math.floor(w/fontSize);
+    drops=Array(cols).fill(1);
+  }
+  window.addEventListener('resize',init,{passive:true});
+  init();
 
-const chars='01'.split('');
-
-function draw(){
-  ctx.fillStyle='rgba(0,0,0,0.05)';
-  ctx.fillRect(0,0,w,h);
-  ctx.fillStyle='var(--matrix)';
-  ctx.font=font+'px monospace';
-  for(let i=0;i<cols;i++){
-    const txt=chars[Math.floor(Math.random()*chars.length)];
-    ctx.fillText(txt,i*font,drops[i]*font);
-    if(drops[i]*font>h&&Math.random()>0.975)drops[i]=0;
-    drops[i]++;
+  function draw(){
+    ctx.fillStyle='rgba(0,0,0,0.06)';          // fade effect
+    ctx.fillRect(0,0,w,h);
+    ctx.fillStyle='var(--matrix)';
+    ctx.font=fontSize+'px monospace';
+    drops.forEach((y,i)=>{
+      const text=letters[Math.floor(Math.random()*letters.length)];
+      ctx.fillText(text,i*fontSize,y*fontSize);
+      drops[i]=(y*fontSize>h&&Math.random()>0.975)?0:y+1;
+    });
+    requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
-}
-draw();
+})();
 </script>
 </body>
 </html>
