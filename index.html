@@ -1,87 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aldin AI</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at top center, #0d0d1a 0%, #050510 100%);
-            color: #d1d9ff;
-            overflow-x: hidden;
-        }
-        header {
-            background-color: #0a0a2a;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 30px;
-            border-bottom: 2px solid #222;
-        }
-        header img {
-            height: 50px;
-        }
-        nav a {
-            color: #d1d9ff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .section {
-            padding: 50px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        h1, h2 {
-            color: #99ccff;
-        }
-        .project {
-            margin-top: 20px;
-        }
-        .animated-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
-            opacity: 0.1;
-            animation: scrollBg 100s linear infinite;
-            z-index: -1;
-        }
-        @keyframes scrollBg {
-            0% {background-position: 0 0;}
-            100% {background-position: 1000px 1000px;}
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldin AI – Futuristic R&D Lab</title>
+
+  <!-- -------------  FONTS & BASE COLORS ------------- -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#57b9ff;
+      --bg:#0a0c1a;
+      --panel:#13172b;
+      --text:#d4e0f0;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* -------------  STARFIELD ANIMATION ------------- */
+    body::before{
+      content:"";
+      position:fixed;inset:0;
+      background:url("https://raw.githubusercontent.com/tholman/cursor-effects/master/trailing-star.png") repeat center/3px;
+      animation: drift 60s linear infinite;
+      opacity:.15;pointer-events:none;
+    }
+    @keyframes drift{to{background-position:-2000px 1000px}}
+
+    /* -------------  HEADER ------------- */
+    header{
+      position:fixed;top:0;left:0;right:0;
+      display:flex;justify-content:center;align-items:center;
+      background:rgba(0,0,0,.4);backdrop-filter:blur(6px);
+      padding:.8rem 1rem;z-index:50;
+    }
+    header h1{font-size:1.5rem;font-weight:700;color:var(--primary);letter-spacing:.05em}
+    nav{margin-left:2rem;display:flex;gap:1.2rem}
+    nav a{
+      color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;
+      position:relative;cursor:pointer;
+    }
+    nav a::after{
+      content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;
+      background:var(--primary);transform:scaleX(0);transition:.3s;
+    }
+    nav a:hover::after{transform:scaleX(1)}
+
+    /* -------------  HERO (logo centered) ------------- */
+    .hero{
+      height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding-top:4rem;
+    }
+    .hero img{max-width:220px;width:50vw;animation:float 6s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-12px)}}
+    .hero .tagline{font-size:1.2rem;margin-top:1rem;color:var(--primary)}
+
+    /* -------------  PANELS ------------- */
+    section{
+      max-width:900px;margin:5rem auto 0;
+      background:var(--panel);border-radius:14px;
+      padding:2.5rem 2rem;line-height:1.6;display:none;
+      opacity:0;transform:translateY(60px);transition:all .5s ease;
+    }
+    section.visible{display:block;opacity:1;transform:translateY(0)}
+
+    h2{color:var(--primary);margin-bottom:.8rem}
+
+    /* -------------  FOOTER ------------- */
+    footer{margin:4rem 0 2rem;text-align:center;font-size:.85rem;color:#7e8aa6}
+
+    /* -------------  SMALL ------------- */
+    @media(max-width:600px){
+      nav{display:none}
+      header h1{font-size:1.25rem}
+      .hero img{max-width:160px}
+    }
+  </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <header>
-        <img src="aldin_logo.png" alt="Aldin AI Logo">
-        <nav>
-            <a href="#mission">Mission</a>
-            <a href="#asher">Project ASHER</a>
-            <a href="#genesis">Project Genesis</a>
-        </nav>
-    </header>
-    <section id="mission" class="section">
-        <h1>Our Mission</h1>
-        <p>To build safe, human-centered AI systems that respect privacy, cultural diversity, and real-world integrity while unlocking the full potential of data and personalized education for everyone.</p>
-    </section>
-    <section id="asher" class="section">
-        <h2>Project ASHER</h2>
-        <div class="project">
-            <p>A futuristic AI-powered learning assistant for K-12 students, ASHER combines speech-to-text, an interactive avatar, and customizable educational content. Parents can tailor instruction to align with values and culture while students prepare for standardized tests like MEAP, ACT, and SAT with real understanding—not just answers. ASHER ensures safety and appropriateness with strong content filters and curriculum alignment.</p>
-        </div>
-    </section>
-    <section id="genesis" class="section">
-        <h2>Project Genesis</h2>
-        <div class="project">
-            <p>Genesis is Aldin AI's synthetic data generation platform. It pulls data from storage (like Amazon S3), understands its schema, generates privacy-preserving synthetic data, and sends it back—automated, continuous, and secure. Designed for data-starved industries (health, finance, defense), Genesis maintains statistical fidelity and supports AI/ML pipelines with zero risk of exposure or hallucination.</p>
-        </div>
-    </section>
+
+  <!-- ---------- HEADER ---------- -->
+  <header>
+    <h1>Aldin&nbsp;AI</h1>
+    <nav>
+      <a onclick="openPanel('mission')">Mission</a>
+      <a onclick="openPanel('asher')">Project&nbsp;ASHER</a>
+      <a onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
+      <a onclick="openPanel('about')">About</a>
+      <a onclick="openPanel('contact')">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ---------- HERO ---------- -->
+  <div class="hero">
+    <img src="aldin_logo.png" alt="Aldin AI logo">
+    <p class="tagline">Ethical AI for Data &amp; Learners</p>
+  </div>
+
+  <!-- ---------- PANELS ---------- -->
+
+  <!-- Mission -->
+  <section id="mission">
+    <h2>Mission</h2>
+    <p>
+      Aldin AI pioneers <strong>ethical, privacy-first artificial intelligence</strong> that empowers both
+      enterprises and learners. We envision a future where synthetic data unlocks innovation without
+      compromising personal privacy, and where every student can access culturally attuned,
+      AI-driven tutoring that nurtures curiosity and success.
+    </p>
+  </section>
+
+  <!-- Project ASHER -->
+  <section id="asher">
+    <h2>Project&nbsp;ASHER &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
+    <p>
+      A speech-enabled K-12 learning companion with a friendly avatar that:
+      <ul>
+        <li>Aligns to MEAP, ACT, SAT, and local curricula.</li>
+        <li>Lets parents set cultural, religious, or ethical boundaries for content.</li>
+        <li>Guides students to <em>solve</em> problems—never just giving answers.</li>
+        <li>Runs safe-content filters and prepares learners via interactive voice &amp; text.</li>
+      </ul>
+      Future roadmap includes mobile AR and holographic interfaces for an immersive
+      classroom-anywhere experience.
+    </p>
+  </section>
+
+  <!-- Project Genesis -->
+  <section id="genesis">
+    <h2>Project&nbsp;Genesis &nbsp;|&nbsp; <em>Seeking Seed Funding</em></h2>
+    <p>
+      Genesis is our <strong>real-time synthetic-data engine</strong> that:
+      <ul>
+        <li>Ingests raw data from S3 (or any object storage) and auto-detects complex schemas.</li>
+        <li>Uses a hybrid GenAI &amp; deterministic pipeline to generate
+            privacy-preserving synthetic datasets (≈1&nbsp;TB/hr &lt;0.5% violations).</li>
+        <li>Redistributes data to isolated sandboxes, enabling safe AI/ML training,
+            A/B testing, and analytics even outside data-lake environments.</li>
+      </ul>
+      Genesis eliminates privacy bottlenecks, accelerates model iteration, and keeps
+      regulators happy.
+    </p>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Aldin AI</h2>
+    <p>
+      Founded in May 2025 in White Lake, Michigan, Aldin AI is currently
+      a solo-founder venture led by <strong>Salah A. Mokhayesh</strong> (ex-GM, OnStar,
+      Rocket Mortgage). Salah has 15+ years in enterprise data &amp; AI, is a best-selling
+      GenAI architecture author, and organizes communities on AI, data governance, and
+      engineering. Phase I funding will build a founding team of a privacy scientist,
+      cloud ML engineer, and compliance lead to bring Project Genesis and Project ASHER
+      to market.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact &amp; Links</h2>
+    <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
+    <p>GitHub: <a href="https://github.com/YOUR-USERNAME" target="_blank">github.com/YOUR-USERNAME</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/YOUR-PROFILE" target="_blank">linkedin.com/in/YOUR-PROFILE</a></p>
+  </section>
+
+  <footer>&copy; 2025 Aldin AI LLC – All rights reserved.</footer>
+
+  <!-- ---------- SIMPLE JS FOR PANEL TOGGLING ---------- -->
+  <script>
+    function openPanel(id){
+      document.querySelectorAll('section').forEach(sec=>sec.classList.remove('visible'));
+      document.getElementById(id).classList.add('visible');
+      window.scrollTo({top: document.getElementById(id).offsetTop-70, behavior:'smooth'});
+    }
+  </script>
 </body>
 </html>
