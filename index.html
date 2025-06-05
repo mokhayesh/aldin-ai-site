@@ -5,33 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldin AI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="logo_resized.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top center, #0d0d1a 0%, #050510 100%);
+            color: #d1d9ff;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #0a0a2a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+            border-bottom: 2px solid #222;
+        }
+        header img {
+            height: 50px;
+        }
+        nav a {
+            color: #d1d9ff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1, h2 {
+            color: #99ccff;
+        }
+        .project {
+            margin-top: 20px;
+        }
+        .animated-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+            opacity: 0.1;
+            animation: scrollBg 100s linear infinite;
+            z-index: -1;
+        }
+        @keyframes scrollBg {
+            0% {background-position: 0 0;}
+            100% {background-position: 1000px 1000px;}
+        }
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <img src="logo_resized.png" alt="Aldin AI Logo" class="logo">
-        <h1>Aldin AI</h1>
-        <p class="tagline">Human-Aligned AI for Data-Driven Progress</p>
+    <div class="animated-bg"></div>
+    <header>
+        <img src="aldin_logo.png" alt="Aldin AI Logo">
+        <nav>
+            <a href="#mission">Mission</a>
+            <a href="#asher">Project ASHER</a>
+            <a href="#genesis">Project Genesis</a>
+        </nav>
     </header>
-
-    <section id="about">
-        <h2>About Aldin AI</h2>
-        <p>Aldin AI LLC is a Michigan-based AI company founded in 2025. We specialize in developing generative AI systems that prioritize safety, privacy, and alignment. Our mission is to empower innovation through AI that adapts to context, respects privacy, and scales across industries.</p>
+    <section id="mission" class="section">
+        <h1>Our Mission</h1>
+        <p>To build safe, human-centered AI systems that respect privacy, cultural diversity, and real-world integrity while unlocking the full potential of data and personalized education for everyone.</p>
     </section>
-
-    <section id="project-asher">
-        <h2>Project ASHER – Personalized AI for K–12 Education</h2>
-        <p>Project ASHER is an AI-powered educational assistant for K–12 students. Featuring a speech-enabled avatar, ASHER offers curriculum-aligned tutoring tailored by parental, cultural, and ethical preferences. Designed with robust safeguards, it prepares students for standardized exams like the MEAP, ACT, and SAT while maintaining interactive, age-appropriate engagement.</p>
+    <section id="asher" class="section">
+        <h2>Project ASHER</h2>
+        <div class="project">
+            <p>A futuristic AI-powered learning assistant for K-12 students, ASHER combines speech-to-text, an interactive avatar, and customizable educational content. Parents can tailor instruction to align with values and culture while students prepare for standardized tests like MEAP, ACT, and SAT with real understanding—not just answers. ASHER ensures safety and appropriateness with strong content filters and curriculum alignment.</p>
+        </div>
     </section>
-
-    <section id="project-nexus">
-        <h2>Project NEXUS – Hybrid Synthetic Data Platform</h2>
-        <p>Project NEXUS delivers privacy-preserving synthetic data that mirrors enterprise data lake structures. It combines deterministic code with GenAI to preserve relational accuracy while preventing re-identification. Our hallucination-mitigation loop ensures that generated data remains valid and regulation-compliant.</p>
+    <section id="genesis" class="section">
+        <h2>Project Genesis</h2>
+        <div class="project">
+            <p>Genesis is Aldin AI's synthetic data generation platform. It pulls data from storage (like Amazon S3), understands its schema, generates privacy-preserving synthetic data, and sends it back—automated, continuous, and secure. Designed for data-starved industries (health, finance, defense), Genesis maintains statistical fidelity and supports AI/ML pipelines with zero risk of exposure or hallucination.</p>
+        </div>
     </section>
-
-    <footer>
-        <p>Contact: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a> | © 2025 Aldin AI LLC</p>
-    </footer>
 </body>
 </html>
