@@ -9,17 +9,24 @@
   --bg:#04080d;
   --panel:#0b1118ee;
   --accent:#25b7ff;
-  --matrix:#25b7ff;      /* matrix-rain colour */
+  --matrix:#25b7ff;
   --font:'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;font-family:var(--font);background:var(--bg);color:#d0e7ff}
 
 /* Header */
-header{position:fixed;top:0;left:0;right:0;height:60px;display:flex;
-       align-items:center;background:#000a;z-index:5}
-header h1{margin:0 1rem;font-size:1.4rem;color:var(--accent);cursor:pointer}
-nav a{margin:0 0.8rem;color:#d0e7ff;text-decoration:none;font-size:.95rem}
+header{position:fixed;top:0;left:0;right:0;height:60px;background:#000a;
+       display:flex;justify-content:center;align-items:center;z-index:5}
+.brand{
+  display:flex;align-items:center;gap:.5rem;cursor:pointer;color:var(--accent);
+  font-size:1.4rem;font-weight:600;text-decoration:none
+}
+.brand img{width:34px;height:34px}
+
+/* Nav */
+nav{margin-left:2rem}
+nav a{margin:0 .8rem;color:#d0e7ff;text-decoration:none;font-size:.95rem}
 nav a:hover{color:var(--accent)}
 
 /* Hero */
@@ -39,7 +46,7 @@ section h2{margin-top:0;color:var(--accent)}
 /* Footer */
 footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
 
-/* Canvas behind everything */
+/* Canvas */
 #matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
 </style>
 </head>
@@ -47,34 +54,33 @@ footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
 <canvas id="matrix"></canvas>
 
 <header>
-  <h1 onclick="window.scrollTo({top:0,behavior:'smooth'})">Aldin AI</h1>
+  <a class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <img src="logo_resized.png" alt="Logo">
+    Aldin AI
+  </a>
   <nav>
-    <a href="#mission" onclick="openPanel('mission')">Mission</a>
-    <a href="#asher"   onclick="openPanel('asher')">Project&nbsp;ASHER</a>
-    <a href="#genesis" onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
-    <a href="#about"   onclick="openPanel('about')">About</a>
-    <a href="#contact" onclick="openPanel('contact')">Contact</a>
+    <a href="#mission"  onclick="openPanel('mission')">Mission</a>
+    <a href="#asher"    onclick="openPanel('asher')">Project ASHER</a>
+    <a href="#genesis"  onclick="openPanel('genesis')">Project Genesis</a>
+    <a href="#about"    onclick="openPanel('about')">About</a>
+    <a href="#contact"  onclick="openPanel('contact')">Contact</a>
   </nav>
 </header>
 
-<!-- Hero -->
 <section id="hero" class="visible">
-  <!-- Make sure the file name matches exactly (case-sensitive on GitHub Pages) -->
   <img src="logo_resized.png" alt="Aldin AI logo" onerror="this.style.display='none'">
   <p>Accelerating AI use for Data &amp; Learners</p>
 </section>
 
-<!-- Mission -->
 <section id="mission">
   <h2>Mission</h2>
-  <p>Aldin AI pioneers ethical, high-impact artificial-intelligence solutions that unlock the full
-     value of data while empowering learners and protecting privacy. We bridge frontier research and
-     practical deployment to create tools that are safe, inclusive, and future-proof. <strong>Aldin
-     AI is not only a think tank, but an execution hub delivering the most relevant ways to utilize
-     AI.</strong></p>
+  <p>Aldin AI pioneers ethical, high-impact artificial-intelligence solutions that unlock the
+     full value of data while empowering learners and protecting privacy. We bridge frontier
+     research and practical deployment to create tools that are safe, inclusive, and future-proof.
+     <strong>Aldin AI is not only a think tank, but an execution hub delivering the most relevant
+     ways to utilize AI.</strong></p>
 </section>
 
-<!-- Project ASHER -->
 <section id="asher">
   <h2>Project ASHER – Adaptive Student Helper & Educational AI</h2>
   <p>An interactive K-12 assistant with avatar, voice+text, and curriculum-aligned knowledge base.
@@ -83,23 +89,21 @@ footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
   <p class="funding">Seeking pre-seed partners for MVP completion and pilot deployments.</p>
 </section>
 
-<!-- Project Genesis -->
 <section id="genesis">
   <h2>Project Genesis – Privacy-Preserving Synthetic Data Platform</h2>
   <p>Generates high-fidelity synthetic twins of enterprise data, enforcing differential privacy and
-     eliminating hallucinations. Streams to S3 at &gt;1 TB/hr with &lt;0.5 % schema violations.</p>
+     eliminating hallucinations. Streams to S3 at &gt;1 TB / hr with &lt;0.5 % schema violations.</p>
   <p class="funding">Seeking seed funding for scale-out tests and compliance certification.</p>
 </section>
 
-<!-- About -->
 <section id="about">
   <h2>About Aldin AI</h2>
-  <p>Founded May 2025 in White Lake, Michigan by <strong>Salah A. Mokhayesh</strong>, a 15-year
-     veteran of enterprise data architecture (GM, OnStar, Rocket Mortgage). Salah is a best-selling
-     author on GenAI architecture and runs several professional AI communities.</p>
+  <p>Founded May 2025 in White Lake, Michigan by <strong>Salah A. Mokhayesh</strong>, a
+     <strong>20-year</strong> veteran of enterprise data architecture (GM, OnStar, Rocket Mortgage).
+     Salah is a best-selling author on GenAI architecture and runs several professional AI
+     communities.</p>
 </section>
 
-<!-- Contact -->
 <section id="contact">
   <h2>Contact & Links</h2>
   <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
@@ -110,7 +114,6 @@ footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
 
 <footer>&copy; 2025 Aldin AI LLC — All rights reserved.</footer>
 
-<!-- JS: panel toggle + matrix rain -->
 <script>
 function openPanel(id){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('visible'));
