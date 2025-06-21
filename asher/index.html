@@ -1,1 +1,133 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8" data-next-head=""/><meta name="viewport" content="width=device-width" data-next-head=""/><link rel="preload" href="/asher/_next/static/css/38c1a53648d72110.css" as="style"/><link rel="stylesheet" href="/asher/_next/static/css/38c1a53648d72110.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" noModule="" src="/asher/_next/static/chunks/polyfills-42372ed130431b0a.js"></script><script src="/asher/_next/static/chunks/webpack-99bccaad25a50985.js" defer=""></script><script src="/asher/_next/static/chunks/framework-2f335d22a7318891.js" defer=""></script><script src="/asher/_next/static/chunks/main-e890006282441675.js" defer=""></script><script src="/asher/_next/static/chunks/pages/_app-d4bc167234e7779c.js" defer=""></script><script src="/asher/_next/static/chunks/pages/index-f74416a35daf8aff.js" defer=""></script><script src="/asher/_next/static/rsgG6V_C9zyPgfx3hnscX/_buildManifest.js" defer=""></script><script src="/asher/_next/static/rsgG6V_C9zyPgfx3hnscX/_ssgManifest.js" defer=""></script></head><body class="antialiased"><link rel="preload" as="image" href="/alien-avatar.png"/><div id="__next"><main class="min-h-screen flex items-center justify-center bg-gray-50"><div class="min-h-screen bg-gradient-to-b from-purple-900 to-black flex flex-col items-center justify-end p-8 relative overflow-hidden"><div class="absolute top-4 left-4 flex gap-2 z-50 flex-wrap"><label class="cursor-pointer bg-white text-black px-3 py-1 rounded-xl shadow">📄 Upload Content<input type="file" accept=".txt,.doc,.docx,.pdf" class="hidden"/></label><select class="bg-white text-black px-3 py-1 rounded-xl shadow"><option value="1st Grade">1st Grade</option><option value="2nd Grade">2nd Grade</option><option value="3rd Grade" selected="">3rd Grade</option><option value="4th Grade">4th Grade</option><option value="5th Grade">5th Grade</option><option value="6th Grade">6th Grade</option><option value="7th Grade">7th Grade</option><option value="8th Grade">8th Grade</option></select><select class="bg-white text-black px-3 py-1 rounded-xl shadow"><option value="General" selected="">General</option><option value="Math">Math</option><option value="Reading">Reading</option><option value="Science">Science</option><option value="History">History</option></select><button class="bg-yellow-400 text-black px-3 py-1 rounded-xl shadow">Start Quiz Mode</button><button class="bg-white text-black px-3 py-1 rounded-xl shadow">Toggle <!-- -->Light<!-- --> Mode</button></div><img src="/alien-avatar.png" alt="ASHER Avatar" class="absolute bottom-[88px] left-4 w-32 h-32 z-10"/><div class="absolute left-[128px] bottom-[128px] bg-white text-gray-800 px-4 py-2 rounded-2xl text-sm shadow-xl max-w-sm z-20"><p>Hi, I&#x27;m ASHER! How can I help you today?</p><div class="absolute left-[-10px] top-4 w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-r-[10px] border-r-white"></div></div><div class="w-full max-w-xl flex items-center mt-4 z-30"><input class="flex-1 p-2 rounded-l-xl border-t border-b border-l border-white bg-white text-black ml-36" type="text" placeholder="Ask ASHER a question..." value=""/><button class="bg-blue-500 text-white px-4 rounded-r-xl">Send</button><button class="ml-2 bg-purple-500 text-white px-3 py-2 rounded-xl">🎤</button></div></div></main></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/","query":{},"buildId":"rsgG6V_C9zyPgfx3hnscX","assetPrefix":"/asher","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project ASHER – Aldin AI</title>
+  <style>
+    :root {
+      --bg: #04080d;
+      --panel: #0b1118ee;
+      --accent: #25b7ff;
+      --font: 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      font-family: var(--font);
+      background: var(--bg);
+      color: #d0e7ff;
+    }
+    header {
+      text-align: center;
+      padding: 1rem;
+      background: #000a;
+    }
+    header img {
+      height: 40px;
+    }
+    h1 {
+      color: var(--accent);
+      margin-top: 1rem;
+    }
+    #chatbox {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: var(--panel);
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+    #messages {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .msg { margin: 0.5rem 0; }
+    .user { color: #25b7ff; }
+    .ai { color: #c7ffde; }
+    form {
+      display: flex;
+      gap: 0.5rem;
+    }
+    input {
+      flex: 1;
+      padding: 0.5rem;
+      background: #121b25;
+      border: 1px solid #333;
+      color: white;
+      border-radius: 6px;
+    }
+    button {
+      background: var(--accent);
+      border: none;
+      color: black;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="/logo_resized.png" alt="Aldin AI" />
+  <h1>Project ASHER – Student Chatbot</h1>
+</header>
+
+<div id="chatbox">
+  <div id="messages"></div>
+  <form id="chat-form">
+    <input type="text" id="user-input" placeholder="Ask me a question..." required />
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('user-input');
+  const messages = document.getElementById('messages');
+
+  async function sendMessage(message) {
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user';
+    userMsg.textContent = "You: " + message;
+    messages.appendChild(userMsg);
+
+    const loadingMsg = document.createElement('div');
+    loadingMsg.className = 'msg ai';
+    loadingMsg.textContent = "ASHER is thinking...";
+    messages.appendChild(loadingMsg);
+
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer YOUR_OPENAI_API_KEY', // <-- Replace this!
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [{ role: 'user', content: message }]
+        })
+      });
+      const data = await response.json();
+      loadingMsg.textContent = "ASHER: " + data.choices[0].message.content.trim();
+    } catch (err) {
+      loadingMsg.textContent = "ASHER: Sorry, something went wrong.";
+    }
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const msg = input.value.trim();
+    if (msg) {
+      sendMessage(msg);
+      input.value = '';
+    }
+  });
+</script>
+
+</body>
+</html>
