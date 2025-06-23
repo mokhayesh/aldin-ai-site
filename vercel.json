@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/asher/:path*",
+      "destination": "https://aldin-ai.vercel.app/asher/:path*"
+    }
+  ]
+}
