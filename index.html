@@ -63,16 +63,17 @@
     <a href="#genesis"  onclick="openPanel('genesis')">Project Genesis</a>
     <a href="#about"    onclick="openPanel('about')">About</a>
     <a href="#contact"  onclick="openPanel('contact')">Contact</a>
-    <!-- updated link -->
+    <!-- Opens your deployed chatbot -->
     <a href="https://aldin-ai.vercel.app/asher/" target="_blank" rel="noopener">Try ASHER</a>
-
+    <!-- New Playground link -->
+    <a href="/playground" target="_blank" rel="noopener">AI Playground</a>
   </nav>
 </header>
 
 <!-- Hero w/ centered logo + tagline -->
 <section id="hero" class="visible">
-  <img src="alien-625.gif" alt="Aldin AI logo" />
-  <p>Accelerating AI use for Data, Companies &amp; Learners</p>
+  <img src="logo_resized.png" alt="Aldin AI logo" />
+  <p>Accelerating AI use for Data, Companies & Learners</p>
 </section>
 
 <section id="mission">
@@ -87,7 +88,7 @@
 </section>
 
 <section id="asher">
-  <h2>Project ASHER – Adaptive Student Helper &amp; Educational AI</h2>
+  <h2>Project ASHER – Adaptive Student Helper & Educational AI</h2>
   <p>
     An interactive K-12 assistant with avatar, voice + text, and curriculum-aligned knowledge
     base. Parents can tailor cultural/ethical filters; ASHER teaches problem-solving and prepares
@@ -100,7 +101,7 @@
   <h2>Project Genesis – Privacy-Preserving Synthetic Data Platform</h2>
   <p>
     Generates high-fidelity synthetic twins of enterprise data, enforcing differential privacy
-    and eliminating hallucinations. Streams to S3 at &gt;1 TB /hr with &lt;0.5 % schema violations.
+    and eliminating hallucinations. Streams to S3 at &gt;1 TB /hr with &lt;0.5% schema violations.
   </p>
   <p class="funding">Seeking seed funding for scale-out tests and compliance certification.</p>
 </section>
@@ -108,34 +109,29 @@
 <section id="about">
   <h2>About Aldin AI</h2>
   <p>
-    <strong>Aldin&nbsp;AI&nbsp;LLC</strong> was incorporated in May 2025 in White Lake, Michigan by
-    <strong>Salah A.&nbsp;Mokhayesh</strong> — a <strong>20-year</strong> leader in enterprise data architecture
-    whose portfolio spans General Motors, OnStar, Rocket Mortgage, and others.<br />
+    <strong>Aldin AI LLC</strong> was incorporated in May 2025 in White Lake, Michigan by
+    <strong>Salah A. Mokhayesh</strong> — a <strong>20-year</strong> leader in enterprise data
+    architecture whose portfolio spans General Motors, OnStar, Rocket Mortgage, and others.<br />
     Salah is the best-selling author of
     <em>AI: Work Smarter and Live Better Within Civilization's Next Big Disruption</em>,
-    founder of several professional communities advancing GenAI, data governance, and solution
+    founder of professional communities advancing GenAI, data governance, and solution
     engineering, and a recognized expert in data management, governance, quality, and large-scale
     architecture.<br />
-    Under his direction, Aldin AI delivers mission-critical, privacy-first AI solutions that convert
-    complex data challenges into measurable business value.
+    Under his direction, Aldin AI delivers mission-critical, privacy-first AI solutions that
+    convert complex data challenges into measurable business value.
   </p>
 </section>
 
 <section id="contact">
-  <h2>Contact &amp; Links</h2>
+  <h2>Contact & Links</h2>
   <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
   <p>
     GitHub:
-    <a href="https://github.com/mokhayesh/Aldin-AI" target="_blank">
-      github.com/mokhayesh/Aldin-AI
-    </a>
+    <a href="https://github.com/mokhayesh/Aldin-AI" target="_blank">github.com/mokhayesh/Aldin-AI</a>
   </p>
   <p>
     LinkedIn:
-    <a
-      href="https://www.linkedin.com/in/salah-mokhayesh-06509021/"
-      target="_blank"
-    >
+    <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank">
       linkedin.com/in/salah-mokhayesh-06509021
     </a>
   </p>
@@ -176,7 +172,7 @@ function openPanel(id){
     ctx.font=fontSize+'px monospace';
     drops.forEach((y,i)=>{
       ctx.fillText(chars[Math.random()>0.98?1:0], i*fontSize, y*fontSize);
-      drops[i]=(y*fontSize>h && Math.random()>0.975)?0:y+1;
+      drops[i] = (y*fontSize > h && Math.random()>0.975) ? 0 : y+1;
     });
     requestAnimationFrame(draw);
   })();
