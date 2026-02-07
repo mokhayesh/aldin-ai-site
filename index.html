@@ -41,17 +41,24 @@
     .funding{background:#ffb70311;border:1px dashed #ffb703;border-radius:6px;
              padding:.5rem .8rem;margin-top:1rem;font-size:.9rem;color:#ffb703}
 
-    /* Genesis image (UPDATED SIZE) */
+    /* Genesis image (UPDATED WITH ANIMATION) */
     .genesis-image-wrapper {
       display:flex;
       justify-content:center;
       margin:1.5rem 0;
     }
+
+    @keyframes genesisGlow {
+      0% { box-shadow:0 0 14px rgba(37,183,255,0.25); transform:scale(1); }
+      50% { box-shadow:0 0 26px rgba(37,183,255,0.45); transform:scale(1.015); }
+      100% { box-shadow:0 0 14px rgba(37,183,255,0.25); transform:scale(1); }
+    }
+
     .genesis-image {
       width:60%;
       max-width:420px;
       border-radius:12px;
-      box-shadow:0 0 20px rgba(37,183,255,0.3);
+      animation:genesisGlow 4s ease-in-out infinite;
     }
 
     /* Footer */
