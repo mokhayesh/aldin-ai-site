@@ -59,19 +59,20 @@
 
   <nav>
     <a href="#mission"  onclick="openPanel('mission')">Mission</a>
+
+    <!-- NEW NAV LINK ADDED -->
+    <a href="#solutions" onclick="openPanel('solutions')">Solutions</a>
+
     <a href="#asher"    onclick="openPanel('asher')">Project ASHER</a>
     <a href="#genesis"  onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
     <a href="#about"    onclick="openPanel('about')">About</a>
     <a href="#contact"  onclick="openPanel('contact')">Contact</a>
-    <!-- Opens your deployed chatbot -->
     <a href="https://aldin-ai.vercel.app/asher/" target="_blank" rel="noopener">Try&nbsp;ASHER</a>
-    <!-- Opens your deployed application -->
-    <!-- Updated Playground link -->
     <a href="https://aldin-ai.vercel.app/playground/" target="_blank" rel="noopener">AI&nbsp;Playground</a>
   </nav>
 </header>
 
-<!-- Hero w/ centered logo + tagline -->
+<!-- Hero -->
 <section id="hero" class="visible">
   <img src="alien-625.gif" alt="Aldin AI logo" />
   <p>Accelerating AI use for Data, Companies &amp; Learners</p>
@@ -85,6 +86,42 @@
     research and practical deployment to create tools that are safe, inclusive, and future-proof.
     <strong>Aldin&nbsp;AI is not only a think tank, but an execution hub delivering the most
     relevant ways to utilize AI.</strong>
+  </p>
+</section>
+
+<!-- NEW SOLUTIONS SECTION ADDED -->
+<section id="solutions">
+  <h2>Solutions</h2>
+
+  <p>
+    Aldin AI delivers governed, enterprise‑grade systems that integrate seamlessly with your
+    existing infrastructure. Every solution is engineered with a privacy‑first mindset and
+    designed to accelerate impact without disrupting operations.
+  </p>
+
+  <p><strong>Data Governance</strong><br>
+    Frameworks, controls, and synthetic‑data‑powered workflows that ensure accuracy,
+    compliance, and safe innovation across your entire data estate.
+  </p>
+
+  <p><strong>AI Deployment</strong><br>
+    Sidecar AI that plugs into legacy systems, automates decision flows, and enhances
+    operations without requiring costly rewrites or migrations.
+  </p>
+
+  <p><strong>Advanced Analytics</strong><br>
+    Predictive modeling, opportunity discovery, and real‑time insights built on governed,
+    high‑fidelity data—ready for dashboards, automation, or product integration.
+  </p>
+
+  <p><strong>Custom Solutions</strong><br>
+    Bespoke architectures, pipelines, and AI systems tailored to your environment, mission,
+    and constraints. Designed for organizations that need more than off‑the‑shelf tools.
+  </p>
+
+  <p><strong>Strategic Consulting</strong><br>
+    Expert guidance across governance, AI roadmaps, compliance, and analytics optimization
+    to help you scale responsibly and efficiently.
   </p>
 </section>
 
@@ -113,7 +150,6 @@
     Seeking seed funding to expand scale‑out performance, enterprise integrations, and compliance certification.
   </p>
 </section>
-
 
 <section id="about">
   <h2>About&nbsp;Aldin&nbsp;AI</h2>
@@ -152,7 +188,6 @@
 <footer>&copy; 2025 Aldin AI LLC — All rights reserved.</footer>
 
 <script>
-/* Panel navigation */
 function openPanel(id){
   document.querySelectorAll("section").forEach(s=>s.classList.remove("visible"));
   const el=document.getElementById(id);
@@ -160,7 +195,6 @@ function openPanel(id){
   window.scrollTo({top:el.offsetTop-70,behavior:"smooth"});
 }
 
-/* Matrix-rain background */
 (function(){
   const canvas=document.getElementById("matrix"), ctx=canvas.getContext("2d");
   const fontSize=16, chars="01";
