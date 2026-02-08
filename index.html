@@ -1,313 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Aldin AI – Accelerating AI use for Data, Companies &amp; Learners</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    :root{
-      --bg:#04080d;
-      --panel:#0b1118ee;
-      --accent:#25b7ff;
-      --matrix:#25b7ff;
-      --font:'Segoe UI',sans-serif;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:var(--font);background:var(--bg);color:#d0e7ff}
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8" />
+<title>Aldin AI – Accelerating AI use for Data, Companies & Learners</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+:root{--bg:#04080d;--panel:#0b1118ee;--accent:#25b7ff;--matrix:#25b7ff;--font:'Segoe UI',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:var(--font);background:var(--bg);color:#d0e7ff}
 
-    header{position:fixed;top:0;left:0;right:0;height:60px;background:#000a;
-           display:flex;justify-content:center;align-items:center;z-index:5}
-    .brand{display:flex;align-items:center;gap:.5rem;color:var(--accent);
-           font-size:1.4rem;font-weight:600;text-decoration:none;cursor:pointer}
-    .brand img{width:34px;height:34px}
+/* Shared image classes */
+.section-img{width:100%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3)}
+.section-img-medium{width:55%;max-width:420px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3)}
+.section-img-large{width:100%;max-width:720px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3)}
 
-    nav{margin-left:2rem}
-    nav a{margin:0 .8rem;color:#d0e7ff;text-decoration:none;font-size:.95rem}
-    nav a:hover{color:var(--accent)}
+/* Header */
+header{position:fixed;top:0;left:0;right:0;height:60px;background:#000a;display:flex;justify-content:center;align-items:center;z-index:5;padding:0 1rem}
+.brand{display:flex;align-items:center;gap:.5rem;color:var(--accent);font-size:1.4rem;font-weight:600;text-decoration:none;cursor:pointer}
+.brand img{width:34px;height:34px}
+nav{margin-left:2rem;display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+nav a{margin:0 .4rem;color:#d0e7ff;text-decoration:none;font-size:.95rem;white-space:nowrap}
+nav a:hover{color:var(--accent)}
 
-    #hero{display:flex;flex-direction:column;align-items:center;justify-content:center;
-          height:100vh;text-align:center}
-    #hero img{width:220px;max-width:65%;filter:drop-shadow(0 0 8px #000)}
-    #hero p{margin-top:.9rem;font-size:1.25rem;color:var(--accent)}
+/* Hero */
+#hero{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:0 1rem}
+#hero img{width:220px;max-width:65%;filter:drop-shadow(0 0 8px #000)}
+#hero p{margin-top:.9rem;font-size:1.25rem;color:var(--accent)}
 
-    section{max-width:850px;margin:80px auto 60px;padding:1.8rem;background:var(--panel);
-            border-radius:12px;display:none}
-    section.visible{display:block}
-    section h2{color:var(--accent)}
-    .funding{background:#ffb70311;border:1px dashed #ffb703;border-radius:6px;
-             padding:.5rem .8rem;margin-top:1rem;font-size:.9rem;color:#ffb703}
+/* Sections */
+section{max-width:850px;margin:80px auto 60px;padding:1.8rem;background:var(--panel);border-radius:12px;display:none}
+section.visible{display:block}
+section h2{color:var(--accent)}
+.funding{background:#ffb70311;border:1px dashed #ffb703;border-radius:6px;padding:.5rem .8rem;margin-top:1rem;font-size:.9rem;color:#ffb703}
 
-    .genesis-image-wrapper {
-      display:flex;
-      justify-content:center;
-      margin:1.5rem 0;
-    }
+/* Genesis animation */
+.genesis-image-wrapper{display:flex;justify-content:center;margin:1.5rem 0}
+@keyframes genesisGlow{0%{box-shadow:0 0 14px rgba(37,183,255,0.25);transform:scale(1)}50%{box-shadow:0 0 26px rgba(37,183,255,0.45);transform:scale(1.015)}100%{box-shadow:0 0 14px rgba(37,183,255,0.25);transform:scale(1)}}
+.genesis-image{width:60%;max-width:420px;border-radius:12px;animation:genesisGlow 4s ease-in-out infinite}
 
-    @keyframes genesisGlow {
-      0% { box-shadow:0 0 14px rgba(37,183,255,0.25); transform:scale(1); }
-      50% { box-shadow:0 0 26px rgba(37,183,255,0.45); transform:scale(1.015); }
-      100% { box-shadow:0 0 14px rgba(37,183,255,0.25); transform:scale(1); }
-    }
+/* Footer */
+footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
 
-    .genesis-image {
-      width:60%;
-      max-width:420px;
-      border-radius:12px;
-      animation:genesisGlow 4s ease-in-out infinite;
-    }
+/* Matrix */
+#matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
 
-    footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
-
-    #matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-  </style>
+/* Responsive */
+@media(max-width:900px){
+header{flex-direction:column;height:auto;padding:.8rem 0}
+nav{margin-left:0}
+nav a{font-size:.85rem;margin:.2rem}
+section{margin:100px 1rem 60px;padding:1.2rem}
+section h2{text-align:center;font-size:1.3rem}
+.section-img,.section-img-medium,.section-img-large{width:100%!important;max-width:420px!important}
+#hero img{width:60%;max-width:260px}
+.genesis-image{width:80%;max-width:360px}
+}
+@media(max-width:500px){
+nav a{font-size:.75rem}
+section{margin:90px .5rem 50px;padding:1rem}
+.section-img,.section-img-medium,.section-img-large{max-width:320px!important}
+#hero p{font-size:1.05rem}
+}
+</style>
 </head>
+
 <body>
 <canvas id="matrix"></canvas>
 
 <header>
-  <a class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <img src="logo_resized.png" alt="Logo" />
-    Aldin AI
-  </a>
-
-  <nav>
-    <a href="#mission"  onclick="openPanel('mission')">Mission</a>
-    <a href="#solutions" onclick="openPanel('solutions')">Solutions</a>
-    <a href="#asher"    onclick="openPanel('asher')">Project ASHER</a>
-    <a href="#genesis"  onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
-    <a href="#about"    onclick="openPanel('about')">About</a>
-    <a href="#contact"  onclick="openPanel('contact')">Contact</a>
-    <a href="https://aldin-ai.vercel.app/asher/" target="_blank" rel="noopener">Try&nbsp;ASHER</a>
-    <a href="https://aldin-ai.vercel.app/playground/" target="_blank" rel="noopener">AI&nbsp;Playground</a>
-  </nav>
+<a class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<img src="logo_resized.png" alt="Logo" />Aldin AI</a>
+<nav>
+<a href="#mission" onclick="openPanel('mission')">Mission</a>
+<a href="#solutions" onclick="openPanel('solutions')">Solutions</a>
+<a href="#asher" onclick="openPanel('asher')">Project ASHER</a>
+<a href="#genesis" onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
+<a href="#about" onclick="openPanel('about')">About</a>
+<a href="#contact" onclick="openPanel('contact')">Contact</a>
+<a href="https://aldin-ai.vercel.app/asher/" target="_blank" rel="noopener">Try&nbsp;ASHER</a>
+<a href="https://aldin-ai.vercel.app/playground/" target="_blank" rel="noopener">AI&nbsp;Playground</a>
+</nav>
 </header>
 
 <section id="hero" class="visible">
-  <img src="alien-625.gif" alt="Aldin AI logo" />
-  <p>Accelerating AI use for Data, Companies &amp; Learners</p>
+<img src="alien-625.gif" alt="Aldin AI logo" />
+<p>Accelerating AI use for Data, Companies & Learners</p>
 </section>
 
 <section id="mission">
-  <h2>Mission</h2>
-
-  <div style="display:flex;justify-content:center;margin:1.5rem 0;">
-    <img src="asher_mission.png" alt="Aldin AI Mission Visual" style="width:25%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
-
-  <p>
-    Aldin AI pioneers ethical, high-impact artificial-intelligence solutions that unlock the
-    full value of data while empowering learners and protecting privacy. We bridge frontier
-    research and practical deployment to create tools that are safe, inclusive, and future-proof.
-    <strong>Aldin&nbsp;AI is not only a think tank, but an execution hub delivering the most
-    relevant ways to utilize AI.</strong>
-  </p>
+<h2>Mission</h2>
+<div style="display:flex;justify-content:center;margin:1.5rem 0;">
+<img src="asher_mission.png" alt="Mission Visual" class="section-img" />
+</div>
+<p>Aldin AI pioneers ethical, high-impact artificial-intelligence solutions that unlock the full value of data while empowering learners and protecting privacy. We bridge frontier research and practical deployment to create tools that are safe, inclusive, and future-proof. <strong>Aldin AI is not only a think tank, but an execution hub delivering the most relevant ways to utilize AI.</strong></p>
 </section>
 
 <section id="solutions">
-  <h2>Solutions</h2>
-
-  <div style="display:flex;justify-content:center;margin:1.5rem 0;">
-    <img src="asher_solutions.png"
-         alt="Aldin AI Solutions Visual"
-         style="width:25%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
-
-  <p>
-    Aldin AI delivers governed, enterprise‑grade systems that integrate seamlessly with your
-    existing infrastructure. Every solution is engineered with a privacy‑first mindset and
-    designed to accelerate impact without disrupting operations.
-  </p>
-
-  <p><strong>Data Governance</strong><br>
-    Frameworks, controls, and synthetic‑data‑powered workflows that ensure accuracy,
-    compliance, and safe innovation across your entire data estate.
-  </p>
-
-  <p><strong>AI Deployment</strong><br>
-    Sidecar AI that plugs into legacy systems, automates decision flows, and enhances
-    operations without requiring costly rewrites or migrations.
-  </p>
-
-  <p><strong>Custom Solutions</strong><br>
-    Bespoke architectures, pipelines, and AI systems tailored to your environment, mission,
-    and constraints. Designed for organizations that need more than off‑the‑shelf tools.
-  </p>
-
-  <p><strong>Strategic Consulting</strong><br>
-    Expert guidance across governance, AI roadmaps, compliance, and analytics optimization
-    to help you scale responsibly and efficiently.
-  </p>
+<h2>Solutions</h2>
+<div style="display:flex;justify-content:center;margin:1.5rem 0;">
+<img src="asher_solutions.png" alt="Solutions Visual" class="section-img" />
+</div>
+<p>Aldin AI delivers governed, enterprise‑grade systems that integrate seamlessly with your existing infrastructure. Every solution is engineered with a privacy‑first mindset and designed to accelerate impact without disrupting operations.</p>
+<p><strong>Data Governance</strong><br>Frameworks, controls, and synthetic‑data‑powered workflows that ensure accuracy, compliance, and safe innovation across your entire data estate.</p>
+<p><strong>AI Deployment</strong><br>Sidecar AI that plugs into legacy systems, automates decision flows, and enhances operations without requiring costly rewrites or migrations.</p>
+<p><strong>Custom Solutions</strong><br>Bespoke architectures, pipelines, and AI systems tailored to your environment, mission, and constraints.</p>
+<p><strong>Strategic Consulting</strong><br>Guidance across governance, AI roadmaps, compliance, and analytics optimization.</p>
 </section>
 
 <section id="asher">
-  <h2>Project ASHER – Adaptive Student Helper &amp; Educational AI</h2>
-  <p>
-    An interactive K‑12 assistant with avatar, voice&nbsp;+&nbsp;text, and curriculum‑aligned
-    knowledge base. Parents can tailor cultural and ethical filters; ASHER teaches problem‑solving
-    and prepares students for MEAP, ACT, and SAT.
-  </p>
+<h2>Project ASHER – Adaptive Student Helper & Educational AI</h2>
+<p>An interactive K‑12 assistant with avatar, voice + text, and curriculum‑aligned knowledge base.</p>
+<div style="display:flex;flex-direction:column;align-items:center;margin:2rem 0;">
+<img src="asher_interface.png" alt="ASHER Interface" class="section-img-large" />
+</div>
 
-  <div style="display:flex;flex-direction:column;align-items:center;margin:2rem 0;">
-    <img src="asher_interface.png" alt="Project ASHER Chat Interface" style="width:100%;max-width:720px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
+<div style="background:#0b1118ee;border-radius:12px;padding:1.5rem;max-width:720px;margin:0 auto;">
+<h3 style="color:#25b7ff;margin-bottom:1rem;">Interface Capabilities</h3>
+<ul style="line-height:1.6;font-size:.95rem;color:#d0e7ff;padding-left:1.2rem;">
+<li><strong>Journal</strong> — View saved reflections</li>
+<li><strong>Preferences</strong> — Customize behavior</li>
+<li><strong>Home</strong> — Dashboard</li>
+<li><strong>ASHER Avatar</strong> — Visual guide</li>
+<li><strong>Greeting Message</strong> — Welcome prompt</li>
+<li><strong>Upload Button</strong> — Submit worksheets</li>
+<li><strong>Grade Selector</strong> — Academic level</li>
+<li><strong>Subject Selector</strong> — Knowledge domain</li>
+<li><strong>Language Selector</strong> — Response language</li>
+<li><strong>Voice Selector</strong> — Spoken output</li>
+<li><strong>Start Quiz</strong> — Instant quiz</li>
+<li><strong>Chat Input</strong> — Ask questions</li>
+<li><strong>Send Button</strong> — Submit</li>
+<li><strong>Microphone Toggle</strong> — Voice input</li>
+<li><strong>Record Button</strong> — Audio capture</li>
+</ul>
+</div>
 
-  <div style="background:#0b1118ee;border-radius:12px;padding:1.5rem;max-width:720px;margin:0 auto;">
-    <h3 style="color:#25b7ff;margin-bottom:1rem;">Interface Capabilities</h3>
-    <ul style="line-height:1.6;font-size:.95rem;color:#d0e7ff;padding-left:1.2rem;">
-      <li><strong>Journal</strong> — View saved reflections and learning history</li>
-      <li><strong>Preferences</strong> — Customize ASHER’s behavior, filters, and difficulty</li>
-      <li><strong>Home</strong> — Return to dashboard</li>
-      <li><strong>ASHER Avatar</strong> — Friendly visual guide and learning companion</li>
-      <li><strong>Greeting Message</strong> — ASHER’s welcome prompt</li>
-      <li><strong>Upload Button</strong> — Submit worksheets or images for analysis</li>
-      <li><strong>Grade Selector</strong> — Aligns responses with selected academic level</li>
-      <li><strong>Subject Selector</strong> — Switches ASHER’s knowledge domain</li>
-      <li><strong>Language Selector</strong> — Controls response language</li>
-      <li><strong>Voice Selector</strong> — Chooses spoken voice output</li>
-      <li><strong>Start Quiz Button</strong> — Generates instant quiz based on settings</li>
-      <li><strong>Chat Input Field</strong> — Type questions for ASHER</li>
-      <li><strong>Send Button</strong> — Submit typed question</li>
-      <li><strong>Microphone Toggle</strong> — Enable voice input</li>
-      <li><strong>Record Button</strong> — Record audio for ASHER to interpret</li>
-    </ul>
-  </div>
+<h3 style="color:#25b7ff;margin-top:3rem;">Journal</h3>
+<p>ASHER’s journal tracks learning history, mastery, and growth.</p>
+<div style="display:flex;justify-content:center;margin:1.5rem 0;">
+<img src="asher_journal.png" alt="Journal" class="section-img-medium" />
+</div>
 
-  <h3 style="color:#25b7ff;margin-top:3rem;">Journal</h3>
-  <p>
-    ASHER’s journal acts as the student’s growth dashboard. It tracks time‑on‑learning,
-    grade‑level alignment, emerging interests, subject mastery, and accomplishments. This
-    transforms ASHER from a simple tutor into a measurable learning companion.
-  </p>
+<h3 style="color:#25b7ff;margin-top:3rem;">Preferences</h3>
+<p>Parents define cultural context, sensitivity, neutrality, and learning style.</p>
+<div style="display:flex;justify-content:center;margin:1.5rem 0;">
+<img src="asher_preferences.png" alt="Preferences" class="section-img-medium" />
+</div>
 
-  <div style="display:flex;justify-content:center;margin:1.5rem 0;">
-    <img src="asher_journal.png" alt="ASHER Journal" style="width:55%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
-
-  <h3 style="color:#25b7ff;margin-top:3rem;">Preferences</h3>
-  <p>
-    The preferences panel is the governance layer of ASHER. Parents define cultural context,
-    religious sensitivity, political neutrality, orientation filtering, cultural awareness level,
-    and learning style. These settings shape how ASHER teaches, ensuring safety, alignment, and
-    respect for each family’s values.
-  </p>
-
-  <div style="display:flex;justify-content:center;margin:1.5rem 0;">
-    <img src="asher_preferences.png" alt="ASHER Preferences" style="width:55%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
-
-  <p class="funding" style="margin-top:2rem;">
-    Seeking pre‑seed partners for MVP completion and pilot deployments.
-  </p>
+<p class="funding">Seeking pre‑seed partners for MVP completion and pilot deployments.</p>
 </section>
 
-<section id="genesis" class="genesis-section">
-  <h2>Project Genesis – Autonomous Data Governance & Synthetic Intelligence Platform</h2>
-
-  <div class="genesis-image-wrapper">
-    <img src="genesis_branded.png" alt="Project Genesis by Aldin AI" class="genesis-image" />
-  </div>
-
-  <p>
-    A deploy‑anywhere system that connects to enterprise data sources, configures governed frameworks, builds pipelines, executes actions, and generates real‑time insights—while eliminating privacy risk through high‑fidelity synthetic data. Genesis operates as an AI‑infused impact multiplier, engineered with a governance‑first mindset to accelerate opportunity discovery without exposing sensitive information.
-  </p>
-
-  <p>
-    Its synthetic twins preserve statistical truth, enforce differential privacy, and maintain structural integrity with &lt;0.5% schema deviation. Capable of streaming to S3 at over 1&nbsp;TB/hr, Genesis enables safe experimentation, rapid prototyping, and compliant analytics at scale.
-  </p>
-
-  <p class="funding">
-    Seeking seed funding to expand scale‑out performance, enterprise integrations, and compliance certification.
-  </p>
+<section id="genesis">
+<h2>Project Genesis – Autonomous Data Governance & Synthetic Intelligence Platform</h2>
+<div class="genesis-image-wrapper">
+<img src="genesis_branded.png" alt="Genesis" class="genesis-image" />
+</div>
+<p>A deploy‑anywhere system that connects to enterprise data sources, configures governed frameworks, builds pipelines, executes actions, and generates real‑time insights—while eliminating privacy risk through high‑fidelity synthetic data.</p>
+<p>Its synthetic twins preserve statistical truth, enforce differential privacy, and maintain structural integrity with &lt;0.5% schema deviation.</p>
+<p class="funding">Seeking seed funding to expand scale‑out performance, enterprise integrations, and compliance certification.</p>
 </section>
 
 <section id="about">
-  <h2>About Aldin AI</h2>
-
-  <div style="display:flex;justify-content:center;margin:1.5rem 0;">
-    <img src="about_visual.png"
-         alt="Aldin AI About Visual"
-         style="width:25%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
-
-  <p>
-    <strong>Aldin AI LLC</strong> was established in May 2025 in White Lake, Michigan by
-    <strong>Salah A. Mokhayesh</strong> — a <strong>20‑year</strong> leader in enterprise data
-    architecture whose portfolio spans General Motors, OnStar, Rocket Mortgage, and others.
-    Salah is a best‑selling author of
-    <em>AI: Work Smarter and Live Better Within Civilization’s Next Big Disruption</em>,
-    founder of professional communities advancing GenAI, data governance, and solution
-    engineering, and a recognized expert in data management, governance, quality, and
-    large‑scale architecture.
-  </p>
-
-  <p>
-    Under his direction, Aldin AI delivers mission‑critical, privacy‑first AI solutions that
-    convert complex data challenges into measurable business value.
-  </p>
+<h2>About Aldin AI</h2>
+<div style="display:flex;justify-content:center;margin:1.5rem 0;">
+<img src="about_visual.png" alt="About Visual" class="section-img" />
+</div>
+<p><strong>Aldin AI LLC</strong> was established in May 2025 in White Lake, Michigan by <strong>Salah A. Mokhayesh</strong> — a 20‑year leader in enterprise data architecture.</p>
+<p>Under his direction, Aldin AI delivers mission‑critical, privacy‑first AI solutions that convert complex data challenges into measurable business value.</p>
 </section>
 
 <section id="contact">
-  <h2>Contact & Links</h2>
-
-  <div style="display:flex;justify-content:center;margin:1.5rem 0;">
-    <img src="contact_visual.png"
-         alt="Aldin AI Contact Visual"
-         style="width:25%;max-width:360px;border-radius:12px;box-shadow:0 0 20px rgba(37,183,255,0.3);" />
-  </div>
-
-  <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
-  <p>
-    GitHub:
-    <a href="https://github.com/mokhayesh/Aldin-AI" target="_blank" rel="noopener">
-      github.com/mokhayesh/Aldin-AI
-    </a>
-  </p>
-  <p>
-    LinkedIn:
-    <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank" rel="noopener">
-      linkedin.com/in/salah-mokhayesh-06509021
-    </a>
-  </p>
+<h2>Contact & Links</h2>
+<div style="display:flex;justify-content:center;margin:1.5rem 0;">
+<img src="contact_visual.png" alt="Contact Visual" class="section-img" />
+</div>
+<p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
+<p>GitHub: <a href="https://github.com/mokhayesh/Aldin-AI" target="_blank">github.com/mokhayesh/Aldin-AI</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank">linkedin.com/in/salah-mokhayesh-06509021</a></p>
 </section>
 
 <footer>&copy; 2025 Aldin AI LLC — All rights reserved.</footer>
 
 <script>
 function openPanel(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("visible"));
-  const el=document.getElementById(id);
-  el.classList.add("visible");
-  window.scrollTo({top:el.offsetTop-70,behavior:"smooth"});
+document.querySelectorAll("section").forEach(s=>s.classList.remove("visible"));
+const el=document.getElementById(id);
+el.classList.add("visible");
+window.scrollTo({top:el.offsetTop-70,behavior:"smooth"});
 }
 
 (function(){
-  const canvas=document.getElementById("matrix"), ctx=canvas.getContext("2d");
-  const fontSize=16, chars="01";
-  let w,h,cols,drops,matrixColor;
-
-  function init(){
-    w=canvas.width=window.innerWidth;
-    h=canvas.height=window.innerHeight;
-    cols=Math.ceil(w/fontSize);
-    drops=Array(cols).fill(1);
-    matrixColor=getComputedStyle(document.documentElement)
-                 .getPropertyValue("--matrix").trim()||"#25b7ff";
-  }
-  window.addEventListener("resize",init,{passive:true});
-  init();
-
-  (function draw(){
-    ctx.fillStyle="rgba(0,0,0,0.08)";
-    ctx.fillRect(0,0,w,h);
-    ctx.fillStyle=matrixColor;
-    ctx.font=fontSize+"px monospace";
-    drops.forEach((y,i)=>{
-      ctx.fillText(chars[Math.random()>0.98?1:0], i*fontSize, y*fontSize);
-      drops[i]=(y*fontSize>h && Math.random()>0.975)?0:y+1;
-    });
-    requestAnimationFrame(draw);
-  })();
+const canvas=document.getElementById("matrix"),ctx=canvas.getContext("2d");
+const fontSize=16,chars="01";let w,h,cols,drops,matrixColor;
+function init(){
+w=canvas.width=window.innerWidth;
+h=canvas.height=window.innerHeight;
+cols=Math.ceil(w/fontSize);
+drops=Array(cols).fill(1);
+matrixColor=getComputedStyle(document.documentElement).getPropertyValue("--matrix").trim()||"#25b7ff";
+}
+window.addEventListener("resize",init,{passive:true});
+init();
+(function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,w,h);
+ctx.fillStyle=matrixColor;
+ctx.font=fontSize+"px monospace";
+drops.forEach((y,i)=>{
+ctx.fillText(chars[Math.random()>0.98?1:0],i*fontSize,y*fontSize);
+drops[i]=(y*fontSize>h&&Math.random()>0.975)?0:y+1;
+});
+requestAnimationFrame(draw);
+})();
 })();
 </script>
-</body>
-</html>
+
+</body></html>
