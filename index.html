@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -32,7 +32,7 @@
       </div>
 
       <div class="nav-actions">
-        <a class="nav-link-cta" href="https://aldin-ai.vercel.app">Try ASHER</a>
+        <a class="nav-link-cta" href="https://aldin-ai.vercel.app" target="_blank" rel="noopener">Try ASHER</a>
         <a class="button button-small button-primary" href="#contact">Partner</a>
       </div>
     </nav>
@@ -59,8 +59,8 @@
 
           <div class="hero-actions">
             <a class="button button-primary" href="#mini-go">Explore Mini Go</a>
-            <a class="button button-secondary" href="#demo">Watch demo</a>
-            <a class="button button-ghost" href="https://aldin-ai.vercel.app">Try ASHER</a>
+            <a class="button button-secondary" href="#demo">Watch demos</a>
+            <a class="button button-ghost" href="https://aldin-ai.vercel.app" target="_blank" rel="noopener">Try ASHER</a>
           </div>
 
           <div class="trust-strip" aria-label="Aldin AI focus areas">
@@ -155,7 +155,7 @@
 
         <div class="product-actions">
           <a class="button button-primary" href="/aldin-mini-go/">View product page</a>
-          <a class="button button-secondary" href="#demo">Watch demo</a>
+          <a class="button button-secondary" href="#demo">Watch demos</a>
         </div>
       </div>
 
@@ -168,22 +168,76 @@
       </div>
     </section>
 
+    <section id="gallery" class="gallery-section shell">
+      <div class="section-heading">
+        <span class="section-kicker">Mini Go gallery</span>
+        <h2>Add more product photos as Mini Go evolves.</h2>
+        <p>
+          Drop future Mini Go screenshots or product photos into <strong>images/mini-go/</strong>,
+          then add more cards here without changing the rest of the page.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <article class="gallery-card">
+          <img src="aldin-mini-go-hero.jpg" alt="Aldin Mini Go hero product preview" />
+          <div>
+            <h3>Portable setup</h3>
+            <p>Main Mini Go product view.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card gallery-placeholder">
+          <div class="placeholder-art">+</div>
+          <div>
+            <h3>Future product image</h3>
+            <p>Use <code>images/mini-go/mini-go-angle-1.jpg</code>.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card gallery-placeholder">
+          <div class="placeholder-art">+</div>
+          <div>
+            <h3>Future interface screenshot</h3>
+            <p>Use <code>images/mini-go/mini-go-ui-1.jpg</code>.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="demo" class="demo-section">
       <div class="shell">
         <div class="section-heading centered">
           <span class="section-kicker">Mini Go in motion</span>
           <h2>See the private AI workstation experience.</h2>
           <p>
-            Use this section for your strongest product walkthrough, Kickstarter demo,
-            or founder overview video.
+            Keep adding demos here as you record better walkthroughs, Kickstarter clips,
+            field demos, and founder overviews.
           </p>
         </div>
 
-        <div class="video-frame">
-          <video controls preload="metadata" poster="aldin-mini-go-hero.jpg">
-            <source src="aldin-mini-go-demo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <div class="demo-grid">
+          <article class="demo-card">
+            <h3>Mini Go Product Demo</h3>
+            <p>Overview of the Aldin Mini Go private AI workstation experience.</p>
+            <div class="video-frame">
+              <video controls preload="metadata" poster="aldin-mini-go-hero.jpg">
+                <source src="aldin-mini-go-demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
+
+          <article class="demo-card">
+            <h3>Mini Go Field Demo</h3>
+            <p>Real-world walkthrough showing Aldin Mini Go running from the USB setup.</p>
+            <div class="video-frame">
+              <video controls preload="metadata" poster="aldin-mini-go-hero.jpg">
+                <source src="demos/mini-go-demo-2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -225,7 +279,7 @@
               Adaptive student support with voice, avatar interaction, parent controls,
               and curriculum-aligned learning help.
             </p>
-            <a href="https://aldin-ai.vercel.app">Try ASHER</a>
+            <a href="https://aldin-ai.vercel.app" target="_blank" rel="noopener">Try ASHER</a>
           </div>
         </article>
 
@@ -310,7 +364,7 @@
       <div class="shell contact-card">
         <div class="contact-copy">
           <span class="section-kicker">Contact</span>
-          <h2>Letâ€™s build the next practical AI product.</h2>
+          <h2>Let’s build the next practical AI product.</h2>
           <p>
             Interested in Aldin Mini Go, ASHER, Genesis, pilots, partnerships,
             or private AI product development? Reach out directly.
@@ -319,7 +373,7 @@
 
         <div class="contact-actions">
           <a class="button button-primary" href="mailto:salah@aldin.ai">Email Salah</a>
-          <a class="button button-secondary" href="https://aldin-ai.vercel.app">Try ASHER</a>
+          <a class="button button-secondary" href="https://aldin-ai.vercel.app" target="_blank" rel="noopener">Try ASHER</a>
           <a class="button button-ghost" href="#top">Back to top</a>
         </div>
       </div>
@@ -338,17 +392,16 @@
 
       <div class="footer-links">
         <a href="#mini-go">Mini Go</a>
-        <a href="https://aldin-ai.vercel.app">ASHER</a>
+        <a href="https://aldin-ai.vercel.app" target="_blank" rel="noopener">ASHER</a>
         <a href="#ecosystem">Genesis</a>
         <a href="mailto:salah@aldin.ai">Contact</a>
       </div>
     </div>
 
     <div class="shell footer-bottom">
-      <span>Â© 2026 Aldin AI LLC. All rights reserved.</span>
+      <span>© 2026 Aldin AI LLC. All rights reserved.</span>
       <span>Built for practical, privacy-first AI.</span>
     </div>
   </footer>
 </body>
 </html>
-

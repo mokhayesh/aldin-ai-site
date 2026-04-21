@@ -69,6 +69,18 @@ p {
   margin: 0;
 }
 
+code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  color: var(--cyan);
+  background: rgba(94, 231, 255, 0.08);
+  border: 1px solid rgba(94, 231, 255, 0.14);
+}
+
+strong {
+  color: var(--text);
+}
+
 h1,
 h2,
 h3 {
@@ -498,7 +510,7 @@ h3 {
   grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
   gap: 46px;
   align-items: center;
-  padding: 74px 0 96px;
+  padding: 74px 0 70px;
 }
 
 .section-heading {
@@ -593,6 +605,63 @@ h3 {
   color: var(--muted);
 }
 
+.gallery-section {
+  padding: 42px 0 92px;
+}
+
+.gallery-grid,
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.gallery-card,
+.demo-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 22px;
+  margin-bottom: 16px;
+}
+
+.gallery-card h3,
+.demo-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.gallery-placeholder {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  border-style: dashed;
+}
+
+.placeholder-art {
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  color: var(--cyan);
+  font-size: 4rem;
+  font-weight: 200;
+  background:
+    radial-gradient(circle at center, rgba(94, 231, 255, 0.14), transparent 68%),
+    rgba(255, 255, 255, 0.04);
+}
+
 .video-frame {
   padding: 14px;
   background:
@@ -604,6 +673,17 @@ h3 {
   width: 100%;
   border-radius: 24px;
   background: #000;
+}
+
+.demo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 36px;
+}
+
+.demo-card .video-frame {
+  margin-top: 16px;
+  padding: 10px;
+  box-shadow: none;
 }
 
 .ecosystem {
@@ -856,7 +936,9 @@ h3 {
     min-height: 480px;
   }
 
-  .product-grid {
+  .product-grid,
+  .gallery-grid,
+  .demo-grid {
     grid-template-columns: 1fr;
   }
 
@@ -938,12 +1020,13 @@ h3 {
   .demo-section,
   .mission-section,
   .ecosystem,
-  .about-section {
+  .about-section,
+  .gallery-section {
     padding: 64px 0;
   }
 
   .product-hero {
-    padding: 58px 0 70px;
+    padding: 58px 0 50px;
   }
 
   .intro-grid,
@@ -952,7 +1035,9 @@ h3 {
   }
 
   .product-card-body,
-  .principle-card {
+  .principle-card,
+  .gallery-card,
+  .demo-card {
     padding: 20px;
   }
 
