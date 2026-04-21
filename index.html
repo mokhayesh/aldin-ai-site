@@ -2,255 +2,352 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Aldin AI – Accelerating AI use for Data, Companies &amp; Learners</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    :root{
-      --bg:#04080d;
-      --panel:#0b1118ee;
-      --accent:#25b7ff;
-      --matrix:#25b7ff;
-      --font:'Segoe UI',sans-serif;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:var(--font);background:var(--bg);color:#d0e7ff}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aldin AI builds privacy-first AI products for local productivity, data intelligence, student learning, and synthetic data innovation." />
+  <meta name="theme-color" content="#070a18" />
 
-    /* Header */
-    header{position:fixed;top:0;left:0;right:0;height:60px;background:#000a;
-           display:flex;justify-content:center;align-items:center;z-index:5}
-    .brand{display:flex;align-items:center;gap:.5rem;color:var(--accent);
-           font-size:1.4rem;font-weight:600;text-decoration:none;cursor:pointer}
-    .brand img{width:34px;height:34px}
+  <title>Aldin AI | Private AI Tools for Data, Learning & Local Productivity</title>
 
-    /* Nav */
-    nav{margin-left:2rem}
-    nav a{margin:0 .8rem;color:#d0e7ff;text-decoration:none;font-size:.95rem}
-    nav a:hover{color:var(--accent)}
-
-    /* Hero */
-    #hero{display:flex;flex-direction:column;align-items:center;justify-content:center;
-          height:100vh;text-align:center}
-    #hero img{width:220px;max-width:65%;filter:drop-shadow(0 0 8px #000)}
-    #hero p{margin-top:.9rem;font-size:1.25rem;color:var(--accent)}
-
-    /* Sections */
-    section{max-width:850px;margin:80px auto 60px;padding:1.8rem;background:var(--panel);
-            border-radius:12px;display:none}
-    section.visible{display:block}
-    section h2{color:var(--accent)}
-    .funding{background:#ffb70311;border:1px dashed #ffb703;border-radius:6px;
-             padding:.5rem .8rem;margin-top:1rem;font-size:.9rem;color:#ffb703}
-
-
-    .hero-actions{display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center;margin-top:1.4rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.78rem 1.05rem;
-         border-radius:999px;border:1px solid #25b7ff99;color:#dff5ff;text-decoration:none;
-         background:#25b7ff18;box-shadow:0 0 24px #25b7ff22;font-weight:650}
-    .btn.primary{background:linear-gradient(135deg,#25b7ff,#4f7dff);color:#02101e;border:0}
-    .btn:hover{transform:translateY(-1px);text-decoration:none;color:white}
-    .mini-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:1.4rem;align-items:center}
-    .mini-hero img{width:100%;border-radius:14px;border:1px solid #25b7ff44;
-                   box-shadow:0 0 36px #25b7ff20}
-    .kicker{color:#8ee7ff;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.78rem}
-    .mini-title{font-size:2rem;line-height:1.1;margin:.4rem 0 .7rem;color:#f0fbff}
-    .mini-subtitle{font-size:1.04rem;line-height:1.6;color:#cdeaff}
-    .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1.2rem}
-    .feature-card{background:#061527cc;border:1px solid #25b7ff33;border-radius:10px;padding:.85rem}
-    .feature-card strong{color:#f3fbff}
-    .feature-card span{display:block;color:#a9cce5;font-size:.92rem;margin-top:.25rem}
-    .mini-note{margin-top:1rem;padding:.9rem 1rem;border:1px solid #25b7ff44;border-radius:10px;
-               background:#25b7ff10;color:#dff5ff}
-    @media(max-width:760px){
-      header{height:auto;min-height:60px;flex-wrap:wrap;padding:.5rem}
-      nav{margin-left:0;text-align:center}
-      nav a{display:inline-block;margin:.35rem .45rem}
-      #hero{padding-top:110px}
-      .mini-hero{grid-template-columns:1fr}
-      .feature-grid{grid-template-columns:1fr}
-    }
-
-    /* Footer */
-    footer{text-align:center;padding:2rem 0;font-size:.85rem;color:#7a8fa6}
-
-    /* Canvas (Matrix rain) */
-    #matrix{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-  </style>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-<canvas id="matrix"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <a class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <img src="logo_resized.png" alt="Logo" />
-    Aldin AI
-  </a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Aldin AI home">
+        <img src="aldin_logo.png" alt="Aldin AI logo" class="brand-logo" />
+        <span>Aldin AI</span>
+      </a>
 
-  <nav>
-    <a href="#mission"  onclick="openPanel('mission')">Mission</a>
-    <a href="#mini-go"  onclick="openPanel('mini-go')">Aldin&nbsp;Mini&nbsp;Go</a>
-    <a href="#asher"    onclick="openPanel('asher')">Project ASHER</a>
-    <a href="#genesis"  onclick="openPanel('genesis')">Project&nbsp;Genesis</a>
-    <a href="#about"    onclick="openPanel('about')">About</a>
-    <a href="#contact"  onclick="openPanel('contact')">Contact</a>
-    <!-- Opens your deployed chatbot -->
-    <a href="https://aldin-ai.vercel.app/asher/" target="_blank" rel="noopener">Try&nbsp;ASHER</a>
-    <!-- Updated Playground link -->
-    <a href="https://aldin-ai.vercel.app/playground/" target="_blank" rel="noopener">AI&nbsp;Playground</a>
-  </nav>
-</header>
+      <div class="nav-links" aria-label="Page sections">
+        <a href="#mini-go">Mini Go</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#mission">Mission</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-<!-- Hero w/ centered logo + tagline -->
-<section id="hero" class="visible">
-  <img src="alien-625.gif" alt="Aldin AI logo" />
-  <p>Accelerating AI use for Data, Companies &amp; Learners</p>
-  <div class="hero-actions">
-    <a class="btn primary" href="#mini-go" onclick="openPanel('mini-go')">Learn About Aldin Mini Go</a>
-    <a class="btn" href="aldin-mini-go/">Product Page</a>
-    <a class="btn" href="aldin-mini-go-demo.mp4" target="_blank" rel="noopener">Watch Demo</a>
-  </div>
-</section>
+      <div class="nav-actions">
+        <a class="nav-link-cta" href="/asher/">Try ASHER</a>
+        <a class="button button-small button-primary" href="#contact">Partner</a>
+      </div>
+    </nav>
+  </header>
 
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
 
-<section id="mini-go">
-  <div class="mini-hero">
-    <div>
-      <div class="kicker">Introducing Aldin Mini Go</div>
-      <h2 class="mini-title">Your Private AI Workstation on a USB</h2>
-      <p class="mini-subtitle">
-        Aldin Mini Go is a portable AI assistant designed for local AI chat,
-        offline-capable workflows, web search when connected, document analysis,
-        local memory, knowledge-base tools, and professional deliverables.
-      </p>
-      <p class="mini-note">
-        <strong>Offline when you need privacy. Online when you need fresh information.</strong>
-        Working USB prototypes are already running. Kickstarter campaign coming soon.
-        Use the Watch Demo button to see Aldin Mini Go in action.
-      </p>
-      <div class="hero-actions" style="justify-content:flex-start">
-        <a class="btn primary" href="aldin-mini-go/">View Product Page</a>
-        <a class="btn" href="aldin-mini-go-demo.mp4" target="_blank" rel="noopener">Watch Demo</a>
-        <a class="btn" href="mailto:salah@aldin.ai?subject=Aldin%20Mini%20Go">Contact Aldin AI</a>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            Privacy-first AI product studio
+          </div>
+
+          <h1>Private AI tools for data, learning, and local productivity.</h1>
+
+          <p class="hero-lede">
+            Aldin AI builds practical AI products that help people work with data,
+            learn faster, protect privacy, and bring useful intelligence anywhere.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#mini-go">Explore Mini Go</a>
+            <a class="button button-secondary" href="#demo">Watch demo</a>
+            <a class="button button-ghost" href="/asher/">Try ASHER</a>
+          </div>
+
+          <div class="trust-strip" aria-label="Aldin AI focus areas">
+            <span>Local AI</span>
+            <span>Student learning</span>
+            <span>Data intelligence</span>
+            <span>Synthetic data</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Aldin AI assistant preview">
+          <div class="assistant-card">
+            <div class="assistant-card-top">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="assistant-card-label">Aldin Companion</span>
+            </div>
+
+            <div class="assistant-stage">
+              <div class="orb-ring" aria-hidden="true"></div>
+              <img src="alien-625.gif" alt="Animated Aldin AI assistant character" class="alien-gif" />
+            </div>
+
+            <div class="assistant-metrics">
+              <div>
+                <strong>Private</strong>
+                <span>Local-first workflows</span>
+              </div>
+              <div>
+                <strong>Useful</strong>
+                <span>Documents, search, memory</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-pill pill-one">Offline capable</div>
+          <div class="floating-pill pill-two">Web search ready</div>
+          <div class="floating-pill pill-three">Knowledge base</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-band">
+      <div class="shell intro-grid">
+        <div>
+          <span class="section-kicker">What Aldin AI builds</span>
+          <h2>AI systems that feel powerful, practical, and personal.</h2>
+        </div>
+        <p>
+          From a portable USB AI workstation to adaptive student help and enterprise-grade
+          synthetic data, Aldin AI is focused on one thing: making AI useful in the real world
+          without sacrificing privacy, trust, or control.
+        </p>
+      </div>
+    </section>
+
+    <section id="mini-go" class="product-hero shell">
+      <div class="product-copy">
+        <span class="section-kicker">Flagship product</span>
+        <h2>Aldin Mini Go</h2>
+        <p class="section-lede">
+          Your private AI workstation on a USB. Built for local AI chat, offline-capable
+          workflows, web search when connected, document intelligence, memory, and professional deliverables.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">
+            <span class="feature-icon">01</span>
+            <div>
+              <h3>Local AI chat</h3>
+              <p>Run private assistant workflows from a portable workspace.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-icon">02</span>
+            <div>
+              <h3>Knowledge base</h3>
+              <p>Ingest documents and use them as context for smarter answers.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-icon">03</span>
+            <div>
+              <h3>Connected when needed</h3>
+              <p>Use web search when fresh information matters, then return to private work.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-actions">
+          <a class="button button-primary" href="/aldin-mini-go/">View product page</a>
+          <a class="button button-secondary" href="#demo">Watch demo</a>
+        </div>
+      </div>
+
+      <div class="device-card">
+        <img src="aldin-mini-go-hero.jpg" alt="Aldin Mini Go portable AI workstation on a USB" />
+        <div class="device-caption">
+          <strong>Portable AI workstation</strong>
+          <span>Offline when privacy matters. Online when freshness matters.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+      <div class="shell">
+        <div class="section-heading centered">
+          <span class="section-kicker">Mini Go in motion</span>
+          <h2>See the private AI workstation experience.</h2>
+          <p>
+            Use this section for your strongest product walkthrough, Kickstarter demo,
+            or founder overview video.
+          </p>
+        </div>
+
+        <div class="video-frame">
+          <video controls preload="metadata" poster="aldin-mini-go-hero.jpg">
+            <source src="aldin-mini-go-demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosystem" class="ecosystem shell">
+      <div class="section-heading">
+        <span class="section-kicker">Product ecosystem</span>
+        <h2>One company. Multiple privacy-first AI products.</h2>
+        <p>
+          Aldin AI is building a connected ecosystem across portable AI, education,
+          data quality, governance, and synthetic data.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card featured-card">
+          <div class="product-card-image">
+            <img src="alien-625.gif" alt="Aldin Mini Go assistant animation" />
+          </div>
+          <div class="product-card-body">
+            <span class="card-tag">Portable AI</span>
+            <h3>Aldin Mini Go</h3>
+            <p>
+              A private USB-based AI workstation for local chat, documents,
+              memory, web search, and professional deliverables.
+            </p>
+            <a href="/aldin-mini-go/">Explore Mini Go</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card-image">
+            <img src="asher_interface.png" alt="Project ASHER learning interface preview" />
+          </div>
+          <div class="product-card-body">
+            <span class="card-tag">Education AI</span>
+            <h3>Project ASHER</h3>
+            <p>
+              Adaptive student support with voice, avatar interaction, parent controls,
+              and curriculum-aligned learning help.
+            </p>
+            <a href="/asher/">Try ASHER</a>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card-image">
+            <img src="genesis_branded.png" alt="Project Genesis synthetic data platform preview" />
+          </div>
+          <div class="product-card-body">
+            <span class="card-tag">Synthetic data</span>
+            <h3>Project Genesis</h3>
+            <p>
+              Privacy-preserving synthetic data innovation for safer testing,
+              analytics, AI development, and enterprise modernization.
+            </p>
+            <a href="#contact">Discuss Genesis</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="mission" class="mission-section">
+      <div class="shell mission-grid">
+        <div class="mission-copy">
+          <span class="section-kicker">Mission</span>
+          <h2>Built for people who need AI to be useful, private, and real.</h2>
+          <p>
+            Aldin AI bridges frontier AI thinking with practical deployment. The company focuses on
+            products that help organizations, learners, and builders unlock value from data while
+            keeping privacy and trust at the center.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <div class="principle-card">
+            <h3>Privacy-first</h3>
+            <p>Local and controlled workflows when data cannot simply be sent anywhere.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Practical output</h3>
+            <p>Tools designed to produce documents, insights, workflows, and decisions.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Data aware</h3>
+            <p>Built from deep experience in data architecture, governance, and quality.</p>
+          </div>
+          <div class="principle-card">
+            <h3>Human centered</h3>
+            <p>AI that supports learners, professionals, families, and builders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section shell">
+      <div class="about-card">
+        <div class="about-visual">
+          <img src="about_visual.png" alt="Aldin AI visual artwork" />
+        </div>
+
+        <div class="about-copy">
+          <span class="section-kicker">Founder-led execution</span>
+          <h2>Enterprise data experience turned into real AI products.</h2>
+          <p>
+            Aldin AI LLC was founded by Salah A. Mokhayesh, a 20-year enterprise data
+            architecture leader with experience across General Motors, OnStar, Rocket Mortgage,
+            and large-scale data governance initiatives.
+          </p>
+          <p>
+            The mission is simple: turn complex AI and data challenges into useful,
+            trustworthy products that people can actually deploy.
+          </p>
+
+          <div class="about-actions">
+            <a class="button button-secondary" href="https://github.com/mokhayesh/Aldin-AI" target="_blank" rel="noopener">GitHub</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="shell contact-card">
+        <div class="contact-copy">
+          <span class="section-kicker">Contact</span>
+          <h2>Let’s build the next practical AI product.</h2>
+          <p>
+            Interested in Aldin Mini Go, ASHER, Genesis, pilots, partnerships,
+            or private AI product development? Reach out directly.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:salah@aldin.ai">Email Salah</a>
+          <a class="button button-secondary" href="/asher/">Try ASHER</a>
+          <a class="button button-ghost" href="#top">Back to top</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <a class="footer-brand" href="#top">
+          <img src="aldin_logo.png" alt="" aria-hidden="true" />
+          <span>Aldin AI</span>
+        </a>
+        <p>Private AI tools for data, learning, and local productivity.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#mini-go">Mini Go</a>
+        <a href="/asher/">ASHER</a>
+        <a href="#ecosystem">Genesis</a>
+        <a href="mailto:salah@aldin.ai">Contact</a>
       </div>
     </div>
-    <img src="aldin-mini-go-hero.jpg" alt="Aldin Mini Go portable AI workstation on a USB" />
-  </div>
 
-  <div class="feature-grid">
-    <div class="feature-card"><strong>Local AI Chat</strong><span>Core AI chat can run offline from a USB-based workspace.</span></div>
-    <div class="feature-card"><strong>Web Search</strong><span>When connected, search the web, review sources, and save useful results.</span></div>
-    <div class="feature-card"><strong>Local Memory</strong><span>Remember useful preferences and context locally over time.</span></div>
-    <div class="feature-card"><strong>Professional Deliverables</strong><span>Create briefs, resumes, one-pagers, architecture docs, and presentation outlines.</span></div>
-  </div>
-</section>
-
-
-<section id="mission">
-  <h2>Mission</h2>
-  <p>
-    Aldin AI pioneers ethical, high-impact artificial-intelligence solutions that unlock the
-    full value of data while empowering learners and protecting privacy. We bridge frontier
-    research and practical deployment to create tools that are safe, inclusive, and future-proof.
-    <strong>Aldin&nbsp;AI is not only a think tank, but an execution hub delivering the most
-    relevant ways to utilize AI.</strong>
-    <br /><br />
-    <strong>Aldin Mini Go brings that mission into a portable product:</strong> a private AI workstation on a USB for local AI chat, offline-capable workflows, web search, document intelligence, local memory, and professional deliverables.
-  </p>
-</section>
-
-<section id="asher">
-  <h2>Project ASHER – Adaptive Student Helper &amp; Educational AI</h2>
-  <p>
-    An interactive K-12 assistant with avatar, voice&nbsp;+&nbsp;text, and curriculum-aligned
-    knowledge base. Parents can tailor cultural/ethical filters; ASHER teaches problem-solving
-    and prepares students for MEAP / ACT / SAT.
-  </p>
-  <p class="funding">Seeking pre-seed partners for MVP completion and pilot deployments.</p>
-</section>
-
-<section id="genesis">
-  <h2>Project Genesis – Privacy-Preserving Synthetic Data Platform</h2>
-  <p>
-    Generates high-fidelity synthetic twins of enterprise data, enforcing differential privacy
-    and eliminating hallucinations. Streams to S3 at &gt;1&nbsp;TB&nbsp;/&nbsp;hr with
-    &lt;0.5% schema violations.
-  </p>
-  <p class="funding">Seeking seed funding for scale-out tests and compliance certification.</p>
-</section>
-
-<section id="about">
-  <h2>About&nbsp;Aldin&nbsp;AI</h2>
-  <p>
-    <strong>Aldin&nbsp;AI&nbsp;LLC</strong> was incorporated in&nbsp;May&nbsp;2025 in White&nbsp;Lake,
-    Michigan by <strong>Salah&nbsp;A.&nbsp;Mokhayesh</strong> — a <strong>20-year</strong> leader in
-    enterprise data architecture whose portfolio spans General&nbsp;Motors, OnStar,
-    Rocket&nbsp;Mortgage, and others.<br />
-    Salah is the best-selling author of
-    <em>AI: Work&nbsp;Smarter and Live&nbsp;Better Within Civilization&#39;s Next Big Disruption</em>,
-    founder of professional communities advancing GenAI, data governance, and solution
-    engineering, and a recognized expert in data management, governance, quality, and large-scale
-    architecture.<br />
-    Under his direction, Aldin AI delivers mission-critical, privacy-first AI solutions that
-    convert complex data challenges into measurable business value.
-  </p>
-</section>
-
-<section id="contact">
-  <h2>Contact&nbsp;&amp;&nbsp;Links</h2>
-  <p>Email: <a href="mailto:salah@aldin.ai">salah@aldin.ai</a></p>
-  <p>
-    GitHub:
-    <a href="https://github.com/mokhayesh/Aldin-AI" target="_blank" rel="noopener">
-      github.com/mokhayesh/Aldin-AI
-    </a>
-  </p>
-  <p>
-    LinkedIn:
-    <a href="https://www.linkedin.com/in/salah-mokhayesh-06509021/" target="_blank" rel="noopener">
-      linkedin.com/in/salah-mokhayesh-06509021
-    </a>
-  </p>
-</section>
-
-<footer>&copy; 2025 Aldin AI LLC — All rights reserved.</footer>
-
-<script>
-/* Panel navigation */
-function openPanel(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("visible"));
-  const el=document.getElementById(id);
-  el.classList.add("visible");
-  window.scrollTo({top:el.offsetTop-70,behavior:"smooth"});
-}
-
-/* Matrix-rain background */
-(function(){
-  const canvas=document.getElementById("matrix"), ctx=canvas.getContext("2d");
-  const fontSize=16, chars="01";
-  let w,h,cols,drops,matrixColor;
-
-  function init(){
-    w=canvas.width=window.innerWidth;
-    h=canvas.height=window.innerHeight;
-    cols=Math.ceil(w/fontSize);
-    drops=Array(cols).fill(1);
-    matrixColor=getComputedStyle(document.documentElement)
-                 .getPropertyValue("--matrix").trim()||"#25b7ff";
-  }
-  window.addEventListener("resize",init,{passive:true});
-  init();
-
-  (function draw(){
-    ctx.fillStyle="rgba(0,0,0,0.08)";
-    ctx.fillRect(0,0,w,h);
-    ctx.fillStyle=matrixColor;
-    ctx.font=fontSize+"px monospace";
-    drops.forEach((y,i)=>{
-      ctx.fillText(chars[Math.random()>0.98?1:0], i*fontSize, y*fontSize);
-      drops[i]=(y*fontSize>h && Math.random()>0.975)?0:y+1;
-    });
-    requestAnimationFrame(draw);
-  })();
-})();
-</script>
+    <div class="shell footer-bottom">
+      <span>© 2026 Aldin AI LLC. All rights reserved.</span>
+      <span>Built for practical, privacy-first AI.</span>
+    </div>
+  </footer>
 </body>
 </html>
